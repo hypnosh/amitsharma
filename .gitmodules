@@ -1,0 +1,9 @@
+[submodule "themes/adritian"]
+	path = themes/adritian
+	url = https://github.com/zetxek/adritian-free-hugo-theme
+[submodule "themes/ananke"]
+	path = themes/ananke
+	url = https://github.com/gohugo-ananke/ananke.git
+[submodule "etch"]
+	path = etch
+	url = https://github.com/LukasJoswiak/etch

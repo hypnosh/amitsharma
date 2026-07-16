@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Amit Sharma - Digital Product Leader</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on Amit Sharma - Digital Product Leader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    
+	<atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <item>
+      <title>First</title>
+      <link>http://localhost:1313/posts/second/</link>
+      <pubDate>Thu, 16 Jul 2026 14:07:18 +0530</pubDate>
+      
+      <guid>http://localhost:1313/posts/second/</guid>
+      <description>&lt;h2 id=&#34;hello-there&#34;&gt;Hello There&lt;/h2&gt;
+&lt;p&gt;Second Hugo post.&lt;/p&gt;
+</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>First</title>
+      <link>http://localhost:1313/posts/first/</link>
+      <pubDate>Thu, 16 Jul 2026 14:07:17 +0530</pubDate>
+      
+      <guid>http://localhost:1313/posts/first/</guid>
+      <description>&lt;h2 id=&#34;hi-there&#34;&gt;Hi There&lt;/h2&gt;
+&lt;p&gt;First Hugo post.&lt;/p&gt;
+</description>
+    </item>
+    
+    
+  </channel>
+</rss>

@@ -1,0 +1,12 @@
+baseURL = 'https://www.amitsharma.tech/'
+locale = 'en-gb'
+title = 'Amit Sharma - Digital Product Leader'
+
+disableKinds = ["taxonomy", "term"]
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[params]
+  description = "Fractional CPO, AI Product Consultant, Startup Mentor and Educator."

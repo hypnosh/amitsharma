@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Amit Sharma - Digital Product Leader</title>
+		<link>http://localhost:1313/</link>
+		<description>Recent content on Amit Sharma - Digital Product Leader</description>
+		<generator>Hugo</generator>
+		<language>en-gb</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 16 Jul 2026 14:07:18 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>First</title>
+				<link>http://localhost:1313/posts/second/</link>
+				<pubDate>Thu, 16 Jul 2026 14:07:18 +0530</pubDate>
+				<guid>http://localhost:1313/posts/second/</guid>
+				<description>&lt;h2 id=&#34;hello-there&#34;&gt;Hello There&lt;/h2&gt;&#xA;&lt;p&gt;Second Hugo post.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>First</title>
+				<link>http://localhost:1313/posts/first/</link>
+				<pubDate>Thu, 16 Jul 2026 14:07:17 +0530</pubDate>
+				<guid>http://localhost:1313/posts/first/</guid>
+				<description>&lt;h2 id=&#34;hi-there&#34;&gt;Hi There&lt;/h2&gt;&#xA;&lt;p&gt;First Hugo post.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
