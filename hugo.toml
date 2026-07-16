@@ -2,7 +2,7 @@ baseURL = 'https://www.amitsharma.tech/'
 locale = 'en-gb'
 title = 'Amit Sharma - Digital Product Leader'
 
-disableKinds = ["taxonomy", "term"]
+    disableKinds = ["taxonomy", "term"]
 
 [markup]
   [markup.goldmark.renderer]
@@ -10,3 +10,6 @@ disableKinds = ["taxonomy", "term"]
 
 [params]
   description = "Fractional CPO, AI Product Consultant, Startup Mentor and Educator."
+
+[params.analytics]
+  gtm = "GTM-PZLNJQ45"
