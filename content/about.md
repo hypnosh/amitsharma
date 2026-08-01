@@ -1,6 +1,6 @@
 ---
 title: "About Amit"
-description: "Product leader, builder, mentor and educator."
+description: "Product leader, builder, startup mentor and educator."
 ---
 
 Hi, I'm Amit Sharma.

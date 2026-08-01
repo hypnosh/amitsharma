@@ -3,7 +3,24 @@
     --bg: #fff;
     --accent: #2563eb;
     --max: 760px;
+
+    --font-ui: Inter, system-ui, sans-serif;
+    --font-body: "Source Serif 4", "Source Serif Pro", Garamond, Times, serif;
 }
+
+/* .source-serif-4-<uniquifier> {
+  font-family: "Source Serif 4", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.inter-<uniquifier> {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
 
 * {
     box-sizing: border-box;
@@ -12,7 +29,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Helvetica, Arial, Inter, system-ui, sans-serif;
+    font-family: var(--font-ui);
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
@@ -35,6 +52,13 @@ nav a {
     color: #444;
 }
 
+nav,
+button,
+.buttons,
+footer {
+    font-family: var(--font-ui);
+}
+
 main {
     max-width: var(--max);
     margin: 80px auto;
@@ -42,8 +66,15 @@ main {
 }
 
 .hero h1 {
+    font-family: var(--font-ui);
     font-size: 56px;
     margin-bottom: 12px;
+}
+
+.hero p {
+    font-family: var(--font-body);
+    font-size: 1.35rem;
+    line-height: 1.7;
 }
 
 .subtitle {
@@ -109,9 +140,10 @@ footer {
 }
 
 .page-content {
-
-    font-size: 1.125rem;
+    font-family: var(--font-body);
+    font-size: 1.25rem;
     line-height: 1.8;
+    max-width: 68ch;
 
 }
 
