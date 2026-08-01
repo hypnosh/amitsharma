@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Amit Sharma - Digital Product Leader</title>
-		<link>http://localhost:1313/</link>
-		<description>Recent content on Amit Sharma - Digital Product Leader</description>
-		<generator>Hugo</generator>
-		<language>en-gb</language>
-		
-		
-		
-		
-			<lastBuildDate>Thu, 16 Jul 2026 14:07:18 +0530</lastBuildDate>
-		
-			<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>First</title>
-				<link>http://localhost:1313/posts/second/</link>
-				<pubDate>Thu, 16 Jul 2026 14:07:18 +0530</pubDate>
-				<guid>http://localhost:1313/posts/second/</guid>
-				<description>&lt;h2 id=&#34;hello-there&#34;&gt;Hello There&lt;/h2&gt;&#xA;&lt;p&gt;Second Hugo post.&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>First</title>
-				<link>http://localhost:1313/posts/first/</link>
-				<pubDate>Thu, 16 Jul 2026 14:07:17 +0530</pubDate>
-				<guid>http://localhost:1313/posts/first/</guid>
-				<description>&lt;h2 id=&#34;hi-there&#34;&gt;Hi There&lt;/h2&gt;&#xA;&lt;p&gt;First Hugo post.&lt;/p&gt;</description>
-			</item>
-	</channel>
+  <channel>
+    <title>Amit Sharma - Digital Product Leader</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Amit Sharma - Digital Product Leader</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 16 Jul 2026 14:07:18 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First</title>
+      <link>http://localhost:1313/posts/second/</link>
+      <pubDate>Thu, 16 Jul 2026 14:07:18 +0530</pubDate>
+      <guid>http://localhost:1313/posts/second/</guid>
+      <description>Hello There Second Hugo post.</description>
+    </item>
+    <item>
+      <title>First</title>
+      <link>http://localhost:1313/posts/first/</link>
+      <pubDate>Thu, 16 Jul 2026 14:07:17 +0530</pubDate>
+      <guid>http://localhost:1313/posts/first/</guid>
+      <description>Hi There First Hugo post.</description>
+    </item>
+    <item>
+      <title>About Amit</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>Hi, I&amp;rsquo;m Amit Sharma.&#xA;I build digital products, help founders build better ones, and spend a lot of time thinking about how technology changes the way we solve problems.&#xA;Over the last 18 years, I&amp;rsquo;ve worked across fintech, insurance, wealth management, education, consumer products, and SaaS. My career has taken me from large organizations like ICICI Securities to high-growth startups like Coverfox, and today to working independently as a fractional product leader, startup advisor, mentor, and educator.</description>
+    </item>
+  </channel>
 </rss>

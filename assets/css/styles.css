@@ -78,3 +78,100 @@ footer {
     text-align: center;
     color: #777;
 }
+
+.page {
+
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+
+}
+
+.page-header {
+
+    margin-bottom: 3rem;
+
+}
+
+.page-header h1 {
+
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+
+}
+
+.page-description {
+
+    color: #666;
+    font-size: 1.1rem;
+
+}
+
+.page-content {
+
+    font-size: 1.125rem;
+    line-height: 1.8;
+
+}
+
+.page-content h2,
+.page-content h3 {
+
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+
+}
+
+.page-content p {
+
+    margin-bottom: 1.5rem;
+
+}
+
+.page-content ul,
+.page-content ol {
+
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+
+}
+
+.page-content li {
+
+    margin-bottom: 0.5rem;
+
+}
+
+.page-content img {
+
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+
+}
+
+.page-content blockquote {
+
+    margin: 2rem 0;
+    padding-left: 1rem;
+    border-left: 4px solid #ddd;
+    color: #555;
+    font-style: italic;
+
+}
+
+.page-content code {
+
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+}
+
+.page-content pre {
+
+    overflow-x: auto;
+    padding: 1rem;
+    border-radius: 8px;
+    background: #f7f7f7;
+
+}
