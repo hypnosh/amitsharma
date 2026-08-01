@@ -59,7 +59,7 @@ main {
 }
 
 .buttons a {
-    padding: 12px 18px;
+    padding: 12px 18px 10px;
     border: 1px solid #222;
     text-decoration: none;
     color: #222;
