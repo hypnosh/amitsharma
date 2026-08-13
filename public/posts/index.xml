@@ -6,21 +6,14 @@
     <description>Recent content in Posts on Amit Sharma - Digital Product Leader</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 16 Jul 2026 14:07:18 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 14:56:03 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>First</title>
-      <link>http://localhost:1313/posts/second/</link>
-      <pubDate>Thu, 16 Jul 2026 14:07:18 +0530</pubDate>
-      <guid>http://localhost:1313/posts/second/</guid>
-      <description>Hello There Second Hugo post.</description>
-    </item>
-    <item>
-      <title>First</title>
-      <link>http://localhost:1313/posts/first/</link>
-      <pubDate>Thu, 16 Jul 2026 14:07:17 +0530</pubDate>
-      <guid>http://localhost:1313/posts/first/</guid>
-      <description>Hi There First Hugo post.</description>
+      <title>The Startup Red Flag I Look For: When Technology Becomes the Product</title>
+      <link>http://localhost:1313/posts/startup-red-flags-technology-is-not-the-product/</link>
+      <pubDate>Tue, 11 Aug 2026 14:56:03 +0530</pubDate>
+      <guid>http://localhost:1313/posts/startup-red-flags-technology-is-not-the-product/</guid>
+      <description>&lt;p&gt;One of the first things I look for when evaluating a startup is deceptively simple:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;What is the technology actually doing for the customer?&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Not what it &lt;em&gt;could&lt;/em&gt; do.&lt;/p&gt;&#xA;&lt;p&gt;Not how technically impressive it is.&lt;/p&gt;&#xA;&lt;p&gt;Not whether the founders have built something that would make an engineer excited.&lt;/p&gt;&#xA;&lt;p&gt;What does it actually change for the person paying for it?&lt;/p&gt;&#xA;&lt;p&gt;This matters because I see a recurring pattern in startups, particularly AI startups.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

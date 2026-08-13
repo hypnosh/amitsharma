@@ -6,28 +6,21 @@
     <description>Recent content on Amit Sharma - Digital Product Leader</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 16 Jul 2026 14:07:18 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 14:56:03 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>First</title>
-      <link>http://localhost:1313/posts/second/</link>
-      <pubDate>Thu, 16 Jul 2026 14:07:18 +0530</pubDate>
-      <guid>http://localhost:1313/posts/second/</guid>
-      <description>Hello There Second Hugo post.</description>
-    </item>
-    <item>
-      <title>First</title>
-      <link>http://localhost:1313/posts/first/</link>
-      <pubDate>Thu, 16 Jul 2026 14:07:17 +0530</pubDate>
-      <guid>http://localhost:1313/posts/first/</guid>
-      <description>Hi There First Hugo post.</description>
+      <title>The Startup Red Flag I Look For: When Technology Becomes the Product</title>
+      <link>http://localhost:1313/posts/startup-red-flags-technology-is-not-the-product/</link>
+      <pubDate>Tue, 11 Aug 2026 14:56:03 +0530</pubDate>
+      <guid>http://localhost:1313/posts/startup-red-flags-technology-is-not-the-product/</guid>
+      <description>&lt;p&gt;One of the first things I look for when evaluating a startup is deceptively simple:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;What is the technology actually doing for the customer?&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Not what it &lt;em&gt;could&lt;/em&gt; do.&lt;/p&gt;&#xA;&lt;p&gt;Not how technically impressive it is.&lt;/p&gt;&#xA;&lt;p&gt;Not whether the founders have built something that would make an engineer excited.&lt;/p&gt;&#xA;&lt;p&gt;What does it actually change for the person paying for it?&lt;/p&gt;&#xA;&lt;p&gt;This matters because I see a recurring pattern in startups, particularly AI startups.&lt;/p&gt;</description>
     </item>
     <item>
       <title>About Amit</title>
       <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>Hi, I&amp;rsquo;m Amit Sharma.&#xA;I build digital products, help founders build better ones, and spend a lot of time thinking about how technology changes the way we solve problems.&#xA;Over the last 18 years, I&amp;rsquo;ve worked across fintech, insurance, wealth management, education, consumer products, and SaaS. My career has taken me from large organizations like ICICI Securities to high-growth startups like Coverfox, and today to working independently as a fractional product leader, startup advisor, mentor, and educator.</description>
+      <description>&lt;p&gt;Hi, I&amp;rsquo;m Amit Sharma.&lt;/p&gt;&#xA;&lt;p&gt;I build digital products, help founders build better ones, and spend a lot of time thinking about how technology changes the way we solve problems.&lt;/p&gt;&#xA;&lt;p&gt;Over the last 18 years, I&amp;rsquo;ve worked across fintech, insurance, wealth management, education, consumer products, and SaaS. My career has taken me from large organizations like ICICI Securities to high-growth startups like Coverfox, and today to working independently as a fractional product leader, startup advisor, mentor, and educator.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
