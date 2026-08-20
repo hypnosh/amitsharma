@@ -1,7 +1,7 @@
 ---
 date: '2026-08-20T10:44:59+05:30'
 draft: false
-title: "Help! I'm Turning Into a Services Company!"
+title: "Help, I'm Turning Into a Services Company!"
 description: "How product companies can accidentally turn into services businesses, one customer request at a time, and why strengthening the core product matters more than endlessly servicing exceptions."
 tags:
  - product strategy
