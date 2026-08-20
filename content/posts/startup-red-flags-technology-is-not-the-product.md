@@ -1,7 +1,7 @@
 ---
 date: "2026-08-11T14:56:03+05:30"
 title: "The Startup Red Flag I Look For: When Technology Becomes the Product"
-draft: true
+draft: false
 description: "When evaluating startups, I look beyond technical sophistication and ask what actually changes for the customer."
 tags:
   - startups
