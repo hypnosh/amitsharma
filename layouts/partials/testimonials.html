@@ -1,0 +1,35 @@
+{{ $featured := where site.Data.testimonials "featured" true }}
+
+{{ if $featured }}
+<section class="testimonials" aria-label="Testimonials">
+    <div class="testimonials-grid">
+        {{ range $featured }}
+        {{ if .quote }}
+        <figure class="testimonial">
+            <blockquote>
+                <p>{{ .quote }}</p>
+            </blockquote>
+
+            <figcaption>
+                <strong>{{ .name }}</strong>
+
+                {{ if or .role .company }}
+                <span>
+                    {{ with .role }}{{ . }}{{ end }}
+                    {{ if and .role .company }} · {{ end }}
+                    {{ with .company }}{{ . }}{{ end }}
+                </span>
+                {{ end }}
+
+                {{ with .linkedin }}
+                <a href="{{ . }}" target="_blank" rel="noopener noreferrer">
+                    LinkedIn
+                </a>
+                {{ end }}
+            </figcaption>
+        </figure>
+        {{ end }}
+        {{ end }}
+    </div>
+</section>
+{{ end }}

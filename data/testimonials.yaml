@@ -1,0 +1,15 @@
+- id: sr
+  featured: false
+  quote: "Hey you!"
+  name: "Sandipan Roy"
+  role: "CIO"
+  company: "Motilal Oswal"
+  linkedin: ""
+
+- id: dg
+  featured: false
+  quote: "Yo ssup"
+  name: "Dejo George"
+  role: "Founder"
+  company: "TasteExpress"
+  linkedin: ""

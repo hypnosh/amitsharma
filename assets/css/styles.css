@@ -207,3 +207,57 @@ footer {
     background: #f7f7f7;
 
 }
+
+.testimonials {
+    margin: 5rem 0;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+}
+
+.testimonial {
+    margin: 0;
+}
+
+.testimonial blockquote {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.65;
+}
+
+.testimonial blockquote p {
+    margin: 0;
+}
+
+.testimonial figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+}
+
+.testimonial figcaption strong {
+    font-weight: 600;
+}
+
+.testimonial figcaption span {
+    color: var(--muted);
+}
+
+.testimonial figcaption a {
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 700px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
