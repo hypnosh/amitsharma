@@ -15,5 +15,7 @@
     <lastmod>2026-08-11T14:56:03+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/about/</loc>
+  </url><url>
+    <loc>http://localhost:1313/r/random/</loc>
   </url>
 </urlset>

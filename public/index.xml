@@ -29,5 +29,12 @@
       <guid>http://localhost:1313/about/</guid>
       <description>&lt;p&gt;Hi, I&amp;rsquo;m Amit Sharma.&lt;/p&gt;&#xA;&lt;p&gt;I build digital products, help founders build better ones, and spend a lot of time thinking about how technology changes the way we solve problems.&lt;/p&gt;&#xA;&lt;p&gt;Over the last 18 years, I&amp;rsquo;ve worked across fintech, insurance, wealth management, education, consumer products, and SaaS. My career has taken me from large organizations like ICICI Securities to high-growth startups like Coverfox, and today to working independently as a fractional product leader, startup advisor, mentor, and educator.&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>Random</title>
+      <link>http://localhost:1313/r/random/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/r/random/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
