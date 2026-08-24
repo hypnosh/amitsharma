@@ -59,4 +59,4 @@ I'm also endlessly fascinated by languages, behavioural psychology, and the syst
 
 Whether you're building a startup, looking for product leadership, or simply enjoy thoughtful conversations about technology and products, I'd be happy to hear from you.
 
-[LinkedIn](https://www.linkedin.com/in/sharmakamit/) · [Writing](https://www.ilovecreatingthings.com/) · [GitHub](https://www.github.com/hypnosh) · [Office Hours](https://cal.id/amitsharma-product/office-hours) · [Work With Me](https://www.productproblemsolver.com/fractionalproducthead)
+[LinkedIn](https://www.linkedin.com/in/sharmakamit/) · [Writing](/posts/) · [GitHub](https://www.github.com/hypnosh) · [Office Hours](https://cal.id/amitsharma-product/office-hours) · [Work With Me](https://www.productproblemsolver.com/fractionalproducthead)
