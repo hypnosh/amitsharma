@@ -1,6 +1,6 @@
 ---
 date: '2026-08-31T13:52:41+05:30'
-draft: true
+draft: false
 title: "A Quick Test for A Startup Idea: Focus"
 description: "A simple startup idea test: focus on one thing, one audience, a large enough market, and learn fast. If you dither, rethink the model."
 tags:
