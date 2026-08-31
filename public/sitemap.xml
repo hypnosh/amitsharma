@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://www.amitsharma.tech/</loc>
     <lastmod>2026-08-20T10:44:59+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/help-im-turning-into-a-services-company/</loc>
+    <loc>https://www.amitsharma.tech/posts/help-im-turning-into-a-services-company/</loc>
     <lastmod>2026-08-20T10:44:59+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://www.amitsharma.tech/posts/</loc>
     <lastmod>2026-08-20T10:44:59+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/startup-red-flags-technology-is-not-the-product/</loc>
+    <loc>https://www.amitsharma.tech/posts/startup-red-flags-technology-is-not-the-product/</loc>
     <lastmod>2026-08-11T14:56:03+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://www.amitsharma.tech/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/r/random/</loc>
+    <loc>https://www.amitsharma.tech/r/random/</loc>
   </url>
 </urlset>

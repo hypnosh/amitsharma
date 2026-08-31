@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Taking you somewhere...</title>
-</head>
+{{ define "main" }}
 
-<body>
   <p>You found the random button.<br/>Let's see where it takes you...</p>
 
     <script>
@@ -20,5 +14,5 @@
 
     window.location.replace(randomPost);
     </script>
-</body>
-</html>
+
+{{ end }}

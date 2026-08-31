@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Amit Sharma - Digital Product Leader</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>https://www.amitsharma.tech/posts/</link>
     <description>Recent content in Posts on Amit Sharma - Digital Product Leader</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 20 Aug 2026 10:44:59 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.amitsharma.tech/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Help, I&#39;m Turning Into a Services Company!</title>
-      <link>http://localhost:1313/posts/help-im-turning-into-a-services-company/</link>
+      <link>https://www.amitsharma.tech/posts/help-im-turning-into-a-services-company/</link>
       <pubDate>Thu, 20 Aug 2026 10:44:59 +0530</pubDate>
-      <guid>http://localhost:1313/posts/help-im-turning-into-a-services-company/</guid>
+      <guid>https://www.amitsharma.tech/posts/help-im-turning-into-a-services-company/</guid>
       <description>&lt;p&gt;A few years apart, I found myself having the same argument in two very different companies.&lt;/p&gt;&#xA;&lt;p&gt;In the first, a client came to us with an existing software package. They needed two junior developers to maintain it.&lt;/p&gt;&#xA;&lt;p&gt;The commercial arrangement was simple: they paid us the salaries of those two people, plus what can generously be described as loose change.&lt;/p&gt;&#xA;&lt;p&gt;I wasn&amp;rsquo;t enthusiastic.&lt;/p&gt;&#xA;&lt;p&gt;My concern wasn&amp;rsquo;t that the work was beneath us. Someone had a system that needed maintaining. They were willing to pay for it. Fair enough.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Startup Red Flag I Look For: When Technology Becomes the Product</title>
-      <link>http://localhost:1313/posts/startup-red-flags-technology-is-not-the-product/</link>
+      <link>https://www.amitsharma.tech/posts/startup-red-flags-technology-is-not-the-product/</link>
       <pubDate>Tue, 11 Aug 2026 14:56:03 +0530</pubDate>
-      <guid>http://localhost:1313/posts/startup-red-flags-technology-is-not-the-product/</guid>
+      <guid>https://www.amitsharma.tech/posts/startup-red-flags-technology-is-not-the-product/</guid>
       <description>&lt;p&gt;One of the first things I look for when evaluating a startup is deceptively simple:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;What is the technology actually doing for the customer?&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Not what it &lt;em&gt;could&lt;/em&gt; do.&lt;/p&gt;&#xA;&lt;p&gt;Not how technically impressive it is.&lt;/p&gt;&#xA;&lt;p&gt;Not whether the founders have built something that would make an engineer excited.&lt;/p&gt;&#xA;&lt;p&gt;What does it actually change for the person paying for it?&lt;/p&gt;&#xA;&lt;p&gt;This matters because I see a recurring pattern in startups, particularly AI startups.&lt;/p&gt;</description>
     </item>
   </channel>
