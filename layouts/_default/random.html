@@ -5,7 +5,7 @@
     <script>
     const posts = [
         {{ range .Site.Data.random.posts }}
-        "{{ .url }}",
+        "{{ .url }}?utm_source=redirect&utm_medium=r-random&utm_campaign=random",
         {{ end }}
     ];
 
