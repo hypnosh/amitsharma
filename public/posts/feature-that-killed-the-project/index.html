@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1">
+
+<title>
+
+The Feature That Killed the Project Wasn&#39;t a Bad Feature · Amit Sharma - Digital Product Leader
+
+</title>
+
+<meta
+    name="description"
+    content="Product leader with 18&#43; years of experience building fintech and SaaS products. Fractional CPO, startup mentor, educator, and builder.">
+
+
+
+<script>
+(function(w,d,s,l,i){
+    w[l]=w[l]||[];
+    w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),
+        dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;
+    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PZLNJQ45');
+</script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+
+
+
+<link
+    rel="stylesheet"
+    href="/css/styles.min.77a93adaefe9faba15d48910e5b9d21344a027979720c8165663acc368e92016.css">
+
+</head>
+
+<body>
+
+
+<noscript>
+    <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PZLNJQ45"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden">
+    </iframe>
+</noscript>
+
+ 
+
+<header>
+
+<nav>
+
+<a href="/">Home</a>
+
+<a href="/about/">About</a>
+
+<a href="/posts/">Writing</a>
+
+
+
+<a href="https://cal.id/amitsharma-product/office-hours">Office Hours</a>
+
+<a href="https://www.productproblemsolver.com/fractionalproducthead">Work With Me</a>
+
+
+</nav>
+
+</header>
+
+<main>
+    
+
+<article class="page">
+
+    <header class="page-header">
+
+        <h1>The Feature That Killed the Project Wasn&#39;t a Bad Feature</h1>
+
+        
+        <p class="page-description">
+            A feature can be valuable and still be the wrong dependency. How adding video to our online poker project became the bottleneck that stopped everything else.
+        </p>
+        
+
+    </header>
+
+    <div class="page-content">
+        <p>Around 2020, a friend and I started building an online multiplayer poker application.</p>
+<p>The idea was straightforward enough. Create a private table, invite your friends, sit down together and play Texas Hold&rsquo;em in the browser. I had spent years playing poker professionally, so the game logic was familiar territory. We built the table, cards, player seating, multiplayer state and a fair amount of the poker engine. We had hand comparison working. My friend was working through pots and side pots, including the genuinely unpleasant edge cases created by multiple all-ins.</p>
+<p>Then we decided the experience needed video.</p>
+<p>This was not an unreasonable decision.</p>
+<p>Poker is a social game. Much of the experience around a home game is not the cards themselves. It is reading reactions, talking rubbish, celebrating a ridiculous river card and watching someone pretend they don&rsquo;t care about losing a big pot.</p>
+<p>If we were going to recreate the experience of playing poker with friends remotely, video felt like an obvious part of the product.</p>
+<p>So we built it.</p>
+<p>Or rather, we started building it.</p>
+<p>We got video working in a prototype. We hired an intern to help with that part. We experimented with PeerJS and browser-based video connections. Individual pieces worked. But we couldn&rsquo;t get video working reliably enough as part of the actual application.</p>
+<p>Meanwhile, the poker product itself was progressing.</p>
+<p>And that&rsquo;s where we made the mistake.</p>
+<p>We allowed video to become a dependency for the entire product.</p>
+<h2 id="an-important-feature-can-still-be-the-wrong-thing-to-build-now">An important feature can still be the wrong thing to build now</h2>
+<p>Looking back, I don&rsquo;t think adding video was the mistake.</p>
+<p>The mistake was treating the product as incomplete without it.</p>
+<p>There is a difference.</p>
+<p>Video was important to our vision of the ideal experience. It was not necessary to validate whether people would enjoy playing poker together through the application.</p>
+<p>Those are two very different thresholds.</p>
+<p>We could have built a functional private poker table where friends joined through a link and played together while talking on WhatsApp, Discord, Zoom or whatever else they already used. The poker experience could have been tested independently of whether we could also solve browser-based video conferencing.</p>
+<p>Instead, we tied the success of one problem to the solution of another.</p>
+<p>The result was predictable. The hardest unsolved subsystem became the bottleneck for everything else.</p>
+<p>Eventually, I joined Coverfox. My co-founder, Pratik, got busier with his day job. The project lost momentum and was abandoned.</p>
+<p>Not because we couldn&rsquo;t build poker.</p>
+<p>Not because nobody wanted the product.</p>
+<p>Not even because video was a bad idea.</p>
+<p>We abandoned it because the thing we had not yet solved became more important than the things we had already built.</p>
+<h2 id="the-dependency-question">The dependency question</h2>
+<p>This is a mistake product teams make surprisingly often.</p>
+<p>A feature can be valuable and still not deserve to be on the critical path.</p>
+<p>Imagine a product with three things:</p>
+<ol>
+<li>The core user problem.</li>
+<li>A feature that makes the experience significantly better.</li>
+<li>A technically difficult subsystem needed for that feature.</li>
+</ol>
+<p>The temptation is to treat all three as one product.</p>
+<p>But they aren&rsquo;t.</p>
+<p>The better question is: what happens if the difficult subsystem doesn&rsquo;t exist yet?</p>
+<p>Can users still get value?</p>
+<p>Can you still learn something important?</p>
+<p>Can you still ship?</p>
+<p>In our case, the answer was clearly yes.</p>
+<p>The poker game could have existed without video. In fact, removing video would probably have made the product easier to test, easier to build and much easier to keep moving while we had limited time outside our day jobs.</p>
+<p>We didn&rsquo;t see it that way at the time because video had become part of the picture in our heads.</p>
+<p>And once a feature becomes part of the picture, removing it can feel like compromising the product.</p>
+<p>Sometimes it is.</p>
+<p>Sometimes it is simply removing an unnecessary dependency.</p>
+<h2 id="what-id-do-differently-now">What I&rsquo;d do differently now</h2>
+<p>If I revive the project, I will probably remove video completely.</p>
+<p>Not postpone it. Not put it in the roadmap. Remove it from the product definition.</p>
+<p>The product is a private online poker table.</p>
+<p>People can decide for themselves how they want to talk.</p>
+<p>That sounds almost embarrassingly obvious now, but it is a useful reminder that product scope isn&rsquo;t only about deciding what to build. It is also about deciding what the rest of the product is allowed to depend on.</p>
+<p>The feature that killed our project wasn&rsquo;t a bad feature.</p>
+<p>It was just allowed to matter too soon.</p>
+
+    </div>
+
+</article>
+
+
+</main>
+
+<footer>
+
+<p>
+
+© 2026 Amit Sharma
+
+</p>
+<p><a class="randomlink-in-footer" title="I was missing the subreddit, so here it is" href="/r/random">/r/random</a></p>
+
+</footer>
+
+</body>
+
+</html>
