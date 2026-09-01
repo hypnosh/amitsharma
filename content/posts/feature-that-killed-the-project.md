@@ -1,6 +1,6 @@
 ---
 date: '2026-09-01T14:36:48+05:30'
-draft: true
+draft: false
 title: "The Feature That Killed the Project Wasn't a Bad Feature"
 description: "A feature can be valuable and still be the wrong dependency. How adding video to our online poker project became the bottleneck that stopped everything else."
 tags:
