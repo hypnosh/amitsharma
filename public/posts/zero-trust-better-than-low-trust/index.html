@@ -92,42 +92,56 @@ Zero Trust Gives a Better Experience Than Low Trust · Amit Sharma - Digital Pro
         <h1>Zero Trust Gives a Better Experience Than Low Trust</h1>
 
         
+        <p class="page-description">
+            Zero trust can create a better user experience than low trust. Design clear boundaries, reduce surveillance, and let well-designed processes earn trust.
+        </p>
+        
 
     </header>
 
     <div class="page-content">
         <p>This morning I had to leave home while our new cleaning staff was still working.</p>
 <p>I could have stayed around and kept an eye on things. After all, I don&rsquo;t know them well yet.</p>
-<p>Instead, I locked the bedroom, told them about it, and left.</p>
+<p>Instead, I locked one of the rooms, told them about it, and left.</p>
 <p>They had access to everything they needed to do their job. I had protected the one space they didn&rsquo;t need access to. When they finished, they would close the main door behind them.</p>
-<p>No supervision. No awkwardness. No need to make a judgement about whether they were trustworthy.</p>
+<p>No supervision. No awkwardness. No need to make a judgement about whether I could trust them.</p>
 <p>That got me thinking about the difference between <strong>low trust and zero trust</strong>.</p>
 <p>Low trust says: <em>I don&rsquo;t trust you, so I need to watch you.</em></p>
-<p>Zero trust says: <em>I don&rsquo;t need to trust you, because I&rsquo;ve designed the system so that you don&rsquo;t need access to what you don&rsquo;t need.</em></p>
+<p>Zero trust says: <em>I don&rsquo;t need to trust you, because I&rsquo;ve designed the system so that you don&rsquo;t have access to what you don&rsquo;t need.</em></p>
 <p>That&rsquo;s a much better experience.</p>
-<p>The distinction matters because low-trust systems tend to push the burden onto people.</p>
-<p>We see this everywhere in products.</p>
-<p>You don&rsquo;t trust the user, so you make them enter another OTP.</p>
-<p>You don&rsquo;t trust the transaction, so you make them confirm it three times.</p>
-<p>You don&rsquo;t trust the employee, so you add another approval layer.</p>
-<p>You don&rsquo;t trust the customer to understand what they&rsquo;re doing, so you add warnings and confirmation dialogs everywhere.</p>
-<p>Sometimes these controls are necessary. But often, we&rsquo;re using human vigilance to compensate for poor system design.</p>
-<p>Zero trust takes a different approach.</p>
-<p>Assume that every request might be risky. Give each person or process only the access it actually needs. Verify what matters. Contain the consequences when something goes wrong.</p>
-<p>And, crucially, <strong>make the system carry the burden of that uncertainty, not the user.</strong></p>
+<p>We see the opposite approach all the time in products and organisations.</p>
+<p>At one of the large enterprises I worked with, I remember encountering workflows where, instead of giving people sufficiently granular permissions, the system relied on email approvals from the HOD for all sorts of things.</p>
+<p>The implicit logic was: <em>We don&rsquo;t trust you to do this, so get someone senior to approve it.</em></p>
+<p>But the HOD wasn&rsquo;t necessarily adding judgement. Often, they were simply acting as a human permission layer because the system itself wasn&rsquo;t capable of expressing the required boundary.</p>
+<p>That&rsquo;s low-trust design.</p>
+<p>And it creates what I think of as a <strong>pipe</strong>.</p>
+<p>The work goes from person A to person B, not because person B needs to do anything meaningful, but because the system hasn&rsquo;t been designed well enough to let person A proceed safely.</p>
+<p>Once that pipe exists, everyone starts working around it.</p>
+<p>Approvals become rubber stamps. Work waits for people who have no context. Managers become bottlenecks. People optimise for getting approval rather than making good decisions.</p>
+<p>And eventually, someone calls it a process problem.</p>
+<p>It wasn&rsquo;t a process problem.</p>
+<p>It was a <strong>product design problem</strong>.</p>
+<p>The better question is not, <em>“How do we make sure this person doesn&rsquo;t do something they shouldn&rsquo;t?”</em></p>
+<p>It&rsquo;s:</p>
+<p><em>“What exactly are we worried they might do, and can we design the system so they simply can&rsquo;t do it?”</em></p>
+<p>That&rsquo;s the essence of zero trust.</p>
+<p>Assume every request might be risky. Give each person or process only the access it actually needs. Verify what matters. Contain the consequences when something goes wrong.</p>
+<p>And crucially, <strong>make the system carry the burden of that uncertainty, not the user.</strong></p>
 <p>That&rsquo;s why zero trust can actually produce a more trusting experience.</p>
 <p>A well-designed system can be extremely sceptical underneath while feeling remarkably effortless on the surface.</p>
-<p>Your bank doesn&rsquo;t need to ask you whether you are really you every thirty seconds if it can continuously assess the risk of what you&rsquo;re doing.</p>
-<p>A workplace doesn&rsquo;t need to rely entirely on whether an employee is trustworthy if permissions are designed around what that employee actually needs to access.</p>
-<p>A product doesn&rsquo;t need to prevent every possible mistake with a warning if it can make important actions reversible.</p>
-<p>The principle is broader than security:</p>
-<blockquote>
+<p>Your bank can continuously assess transaction risk without asking you to prove your identity every thirty seconds.</p>
+<p>A workplace can restrict what an employee can access without requiring a manager to approve every action.</p>
+<p>A product can make important actions reversible instead of protecting users from every conceivable mistake with another warning or confirmation.</p>
+<p>The same principle applies beyond security.</p>
 <p><strong>Don&rsquo;t solve a trust problem with surveillance when you can solve it with boundaries.</strong></p>
-</blockquote>
-<p>There is an important difference between saying <em>&ldquo;I don&rsquo;t trust you&rdquo;</em> and saying <em>&ldquo;you don&rsquo;t need access to that.&rdquo;</em></p>
-<p>The first creates tension.</p>
+<p>There is a fundamental difference between saying <em>“I don&rsquo;t trust you”</em> and saying <em>“You don&rsquo;t need access to that.”</em></p>
+<p>The first creates friction.</p>
 <p>The second creates clarity.</p>
-<p>And perhaps that&rsquo;s one of the underrated jobs of product design: not figuring out whom we can trust, but designing systems where <strong>trust becomes less necessary</strong>.</p>
+<p>And perhaps this is one of the underrated jobs of product design: not figuring out whom we can trust, but designing systems where <strong>trust becomes less necessary</strong>.</p>
+<p>Which brings me to the simplest version of the idea:</p>
+<p><strong>Trust the process, after designing it well.</strong></p>
+<p>Trust shouldn&rsquo;t be a leap of faith we ask people to make.</p>
+<p>It should be the confidence that emerges when the boundaries, permissions and failure modes have been thought through properly.</p>
 <p>The best systems don&rsquo;t require us to constantly watch people.</p>
 <p>They make it safe enough to look away.</p>
 <p>&ndash;</p>
