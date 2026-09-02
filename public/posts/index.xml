@@ -2,38 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Amit Sharma - Digital Product Leader</title>
-    <link>https://www.amitsharma.tech/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Amit Sharma - Digital Product Leader</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 01 Sep 2026 14:36:48 +0530</lastBuildDate>
-    <atom:link href="https://www.amitsharma.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Sep 2026 11:19:22 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zero Trust Gives a Better Experience Than Low Trust</title>
+      <link>http://localhost:1313/posts/zero-trust-better-than-low-trust/</link>
+      <pubDate>Wed, 02 Sep 2026 11:19:22 +0530</pubDate>
+      <guid>http://localhost:1313/posts/zero-trust-better-than-low-trust/</guid>
+      <description>&lt;p&gt;This morning I had to leave home while our new cleaning staff was still working.&lt;/p&gt;&#xA;&lt;p&gt;I could have stayed around and kept an eye on things. After all, I don&amp;rsquo;t know them well yet.&lt;/p&gt;&#xA;&lt;p&gt;Instead, I locked the bedroom, told them about it, and left.&lt;/p&gt;&#xA;&lt;p&gt;They had access to everything they needed to do their job. I had protected the one space they didn&amp;rsquo;t need access to. When they finished, they would close the main door behind them.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>The Feature That Killed the Project Wasn&#39;t a Bad Feature</title>
-      <link>https://www.amitsharma.tech/posts/feature-that-killed-the-project/</link>
+      <link>http://localhost:1313/posts/feature-that-killed-the-project/</link>
       <pubDate>Tue, 01 Sep 2026 14:36:48 +0530</pubDate>
-      <guid>https://www.amitsharma.tech/posts/feature-that-killed-the-project/</guid>
+      <guid>http://localhost:1313/posts/feature-that-killed-the-project/</guid>
       <description>&lt;p&gt;Around 2020, a friend and I started building an online multiplayer poker application.&lt;/p&gt;&#xA;&lt;p&gt;The idea was straightforward enough. Create a private table, invite your friends, sit down together and play Texas Hold&amp;rsquo;em in the browser. I had spent years playing poker professionally, so the game logic was familiar territory. We built the table, cards, player seating, multiplayer state and a fair amount of the poker engine. We had hand comparison working. My friend was working through pots and side pots, including the genuinely unpleasant edge cases created by multiple all-ins.&lt;/p&gt;</description>
     </item>
     <item>
       <title>A Quick Test for A Startup Idea: Focus</title>
-      <link>https://www.amitsharma.tech/posts/quick-test-for-startup-idea/</link>
+      <link>http://localhost:1313/posts/quick-test-for-startup-idea/</link>
       <pubDate>Mon, 31 Aug 2026 13:52:41 +0530</pubDate>
-      <guid>https://www.amitsharma.tech/posts/quick-test-for-startup-idea/</guid>
-      <description>&lt;p&gt;Find:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;One thing&lt;/strong&gt; you can do exceptionally well.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;One slice of users&lt;/strong&gt; who care enough about it.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;A large enough market&lt;/strong&gt; at that intersection.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;A quick MVP&lt;/strong&gt; you can put in front of them and start learning from.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Then move.&lt;/p&gt;&#xA;&lt;p&gt;If you keep dithering on any of these dimensions, what you&amp;rsquo;re probably dealing with isn&amp;rsquo;t execution complexity. It&amp;rsquo;s an unresolved business model.&lt;/p&gt;&#xA;&lt;p&gt;Go back and rethink it.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/quick-test-for-startup-idea/</guid>
+      <description>&lt;p&gt;Find:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;One thing&lt;/strong&gt; you can do exceptionally well.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;One slice of users&lt;/strong&gt; who care enough about it.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;A large enough market&lt;/strong&gt; at that intersection.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;A quick MVP&lt;/strong&gt; you can put in front of them and start learning from.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Then move.&lt;/p&gt;&#xA;&lt;p&gt;If you keep dithering on any of these dimensions, what you&amp;rsquo;re probably dealing with isn&amp;rsquo;t execution complexity. It&amp;rsquo;s an unresolved business model.&lt;/p&gt;&#xA;&lt;p&gt;Go back and rethink it.&lt;/p&gt;&#xA;&lt;p&gt;&amp;ndash;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Working through a similar product challenge?&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Help, I&#39;m Turning Into a Services Company!</title>
-      <link>https://www.amitsharma.tech/posts/help-im-turning-into-a-services-company/</link>
+      <link>http://localhost:1313/posts/help-im-turning-into-a-services-company/</link>
       <pubDate>Thu, 20 Aug 2026 10:44:59 +0530</pubDate>
-      <guid>https://www.amitsharma.tech/posts/help-im-turning-into-a-services-company/</guid>
+      <guid>http://localhost:1313/posts/help-im-turning-into-a-services-company/</guid>
       <description>&lt;p&gt;A few years apart, I found myself having the same argument in two very different companies.&lt;/p&gt;&#xA;&lt;p&gt;In the first, a client came to us with an existing software package. They needed two junior developers to maintain it.&lt;/p&gt;&#xA;&lt;p&gt;The commercial arrangement was simple: they paid us the salaries of those two people, plus what can generously be described as loose change.&lt;/p&gt;&#xA;&lt;p&gt;I wasn&amp;rsquo;t enthusiastic.&lt;/p&gt;&#xA;&lt;p&gt;My concern wasn&amp;rsquo;t that the work was beneath us. Someone had a system that needed maintaining. They were willing to pay for it. Fair enough.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Startup Red Flag I Look For: When Technology Becomes the Product</title>
-      <link>https://www.amitsharma.tech/posts/startup-red-flags-technology-is-not-the-product/</link>
+      <link>http://localhost:1313/posts/startup-red-flags-technology-is-not-the-product/</link>
       <pubDate>Tue, 11 Aug 2026 14:56:03 +0530</pubDate>
-      <guid>https://www.amitsharma.tech/posts/startup-red-flags-technology-is-not-the-product/</guid>
+      <guid>http://localhost:1313/posts/startup-red-flags-technology-is-not-the-product/</guid>
       <description>&lt;p&gt;One of the first things I look for when evaluating a startup is deceptively simple:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;What is the technology actually doing for the customer?&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Not what it &lt;em&gt;could&lt;/em&gt; do.&lt;/p&gt;&#xA;&lt;p&gt;Not how technically impressive it is.&lt;/p&gt;&#xA;&lt;p&gt;Not whether the founders have built something that would make an engineer excited.&lt;/p&gt;&#xA;&lt;p&gt;What does it actually change for the person paying for it?&lt;/p&gt;&#xA;&lt;p&gt;This matters because I see a recurring pattern in startups, particularly AI startups.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -121,7 +121,7 @@ footer {
 .page-header {
 
     margin-bottom: 3rem;
-
+    padding-left: 0;
 }
 
 .page-header h1 {
@@ -264,7 +264,7 @@ footer {
         font-size: 40px;
     }
     .page-header h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
     nav {
         flex-wrap: wrap;

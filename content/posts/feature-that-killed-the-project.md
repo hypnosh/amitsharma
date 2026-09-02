@@ -119,3 +119,9 @@ That sounds almost embarrassingly obvious now, but it is a useful reminder that 
 The feature that killed our project wasn't a bad feature.
 
 It was just allowed to matter too soon.
+
+--
+
+_Working through a similar product challenge?_
+
+_[Book a 45-minute Product Office Hours session](https://cal.id/amitsharma-product/office-hours)_.

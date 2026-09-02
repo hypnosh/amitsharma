@@ -22,3 +22,9 @@ Then move.
 If you keep dithering on any of these dimensions, what you're probably dealing with isn't execution complexity. It's an unresolved business model.
 
 Go back and rethink it.
+
+--
+
+_Working through a similar product challenge?_
+
+_[Book a 45-minute Product Office Hours session](https://cal.id/amitsharma-product/office-hours)_.
