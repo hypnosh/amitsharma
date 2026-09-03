@@ -282,3 +282,6 @@ footer {
 .posts-list a, .posts-list a:visited {
     color:#1533ab;
 }
+.posts-list a:hover {
+    text-decoration: underline;
+}
