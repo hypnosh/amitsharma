@@ -1,20 +1,17 @@
 <header>
 
-<nav>
-
-<a href="/">Home</a>
-
-<a href="/about/">About</a>
-
-<a href="/posts/">Writing</a>
-
-<!-- <a href="/products/">Products</a> -->
-
-<a href="https://cal.id/amitsharma-product/office-hours">Office Hours</a>
-
-<a href="https://www.productproblemsolver.com/fractionalproducthead">Work With Me</a>
-
-
-</nav>
+    <nav>
+    
+        {{ if not .IsHome }}
+            <a href="/" class="brand">amitsharma.tech</a>
+        {{ end }}
+        
+        <a href="/about/">About</a>
+        <a href="/posts/">Writing</a>
+        <!-- <a href="/products/">Products</a> -->
+        <a href="https://cal.id/amitsharma-product/office-hours">Office Hours</a>
+        <a href="https://www.productproblemsolver.com/fractionalproducthead">Work With Me</a>
+    </nav>
+    
 
 </header>

@@ -6,8 +6,15 @@
     <description>Recent content on Amit Sharma - Digital Product Leader</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 02 Sep 2026 11:19:22 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 03 Sep 2026 16:03:37 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Recommendation Without a CTA</title>
+      <link>http://localhost:1313/posts/recommendation-without-cta/</link>
+      <pubDate>Thu, 03 Sep 2026 16:03:37 +0530</pubDate>
+      <guid>http://localhost:1313/posts/recommendation-without-cta/</guid>
+      <description>&lt;p&gt;My work neighbour ordered a chicken meal the other day.&lt;/p&gt;&#xA;&lt;p&gt;When the food arrived, I noticed a small section printed on the package.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;“Try Next”&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Under it were pictures and names of two other chicken dishes.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/posts/nbc-try-next.jpg&#34; alt=&#34;The &amp;ldquo;Try next&amp;rdquo; section on the food package&amp;quot;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;That’s it.&lt;/p&gt;&#xA;&lt;p&gt;No QR code. No discount. No “Order now”. No elaborate loyalty programme.&lt;/p&gt;&#xA;&lt;p&gt;Just two little suggestions for the next time.&lt;/p&gt;&#xA;&lt;p&gt;And I thought: &lt;em&gt;this is a brilliant piece of product thinking.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Zero Trust Gives a Better Experience Than Low Trust</title>
       <link>http://localhost:1313/posts/zero-trust-better-than-low-trust/</link>

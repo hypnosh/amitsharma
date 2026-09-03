@@ -39,10 +39,14 @@ header {
     padding: 24px;
     border-bottom: 1px solid #eee;
 }
+.brand {
+    font-weight: bold;
+}
+
 
 nav {
     display: flex;
-    gap: 24px;
+    gap: 24px 0;
     max-width: var(--max);
     margin: auto;
 }
@@ -50,6 +54,12 @@ nav {
 nav a {
     text-decoration: none;
     color: #444;
+    padding: 3px 24px;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    background: #eee;
 }
 
 nav,
@@ -125,18 +135,14 @@ footer {
 }
 
 .page-header h1 {
-
     font-size: 3rem;
     line-height: 1.1;
     margin-bottom: 0.5rem;
-
 }
 
 .page-description {
-
     color: #666;
     font-size: 1.1rem;
-
 }
 
 .page-content {
@@ -144,26 +150,21 @@ footer {
     font-size: 1.25rem;
     line-height: 1.8;
     max-width: 68ch;
-
 }
 
 .page-content h2,
 .page-content h3 {
-
+    font-family: var(--font-ui);
     margin-top: 3rem;
     margin-bottom: 1rem;
-
 }
 
 .page-content p {
-
     margin-bottom: 1.5rem;
-
 }
 
 .page-content ul,
 .page-content ol {
-
     margin-bottom: 1.5rem;
     padding-left: 1.5rem;
 
@@ -273,4 +274,11 @@ footer {
 
 .randomlink-in-footer {
     font-size: smaller;
+}
+
+.posts-list a {
+    text-decoration: none;
+}
+.posts-list a, .posts-list a:visited {
+    color:#1533ab;
 }
