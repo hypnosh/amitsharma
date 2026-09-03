@@ -1,6 +1,7 @@
 ---
 title: "About Amit"
 description: "Product leader, builder, startup mentor and educator."
+showTestimonials: true
 ---
 
 Hi, I'm Amit Sharma.
