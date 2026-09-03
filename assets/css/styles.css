@@ -211,16 +211,31 @@ footer {
 
 .testimonials {
     margin: 5rem 0;
+    padding: 5rem 0;
+    opacity: .7;
+    border-top: 1px solid #bbb
 }
 
 .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* grid-template-columns: repeat(2, minmax(0, 1fr)); */
     gap: 3rem;
 }
 
 .testimonial {
     margin: 0;
+    position: relative;
+    quotes: "“" "”";
+}
+.testimonial::before {
+    content: open-quote;
+    position: absolute;
+    font-size: 105px;
+    color:#bbb;
+    top: -50px;  
+    left: -40px;
+    z-index: -1;
+    font-family: var(--font-body);
 }
 
 .testimonial blockquote {
