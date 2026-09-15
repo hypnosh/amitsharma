@@ -2,7 +2,15 @@
 date: '2026-09-15T13:22:13+05:30'
 draft: false
 title: 'Old Code, Old Thinking'
+description: "I revisited some old code recently and was surprised by how much of the thinking still holds up, even when the software itself hasn't aged particularly well."
+tags: 
+ - product management
+ - software engineering
+ - product thinking
+ - build in public
+ - learning
 ---
+
 I went back into some old code recently (_[The Feature That Killed the Project Wasn't a Bad Feature](https://www.amitsharma.tech/posts/feature-that-killed-the-project/)_), and found something interesting.
 
 The code itself hasn't aged particularly well. That's probably inevitable. Dependencies are old, some things are half-built, and there are parts I'd approach very differently today.
