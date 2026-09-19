@@ -14,9 +14,15 @@
 {{ end }}
 </title>
 
-<meta
-    name="description"
-    content="{{ .Site.Params.description }}">
+{{ with .Description }}
+    <meta 
+        name="description"
+        content="{{ . }}">
+{{ else }}
+    <meta
+        name="description"
+        content="{{ .Site.Params.description }}">
+{{ end }}
 
 {{ with .Site.Params.analytics.gtm }}
 <!-- Google Tag Manager -->
