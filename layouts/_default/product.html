@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ with .Params.seo.title }}{{ . }}{{ else }}{{ .Title }}{{ end }}</title>
+  {{ with .Params.seo.description | default .Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+  {{ with .Params.seo.og_title | default .Title }}<meta property="og:title" content="{{ . }}">{{ end }}
+  {{ with .Params.seo.og_description | default .Params.description }}<meta property="og:description" content="{{ . }}">{{ end }}
+  <meta property="og:type" content="{{ .Params.seo.og_type | default "product" }}">
+  {{ with .Params.seo.og_image }}{{ with resources.Get . }}<meta property="og:image" content="{{ .Permalink }}">{{ else }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}{{ end }}
+  <meta name="twitter:card" content="{{ .Params.seo.twitter_card | default "summary_large_image" }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ with resources.Get "css/product.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
+  {{ with .Params.product }}
+  <script type="application/ld+json">
+    {{ dict "@context" "https://schema.org" "@type" "Product" "name" .title "description" $.Params.description "offers" (dict "@type" "Offer" "price" .price_amount "priceCurrency" .currency "url" $.Params.purchase_url) | jsonify | safeJS }}
+  </script>
+  {{ end }}
+</head>
+<body>
+  {{ $cta := .Params.purchase_url | default "#offer" }}
+
+  <header class="site-header">
+    {{ with .Params.navigation }}
+    <a class="brand" href="#top"><span class="brand-mark"></span>{{ .brand | default $.Title }}</a>
+    <nav aria-label="{{ .label | default "Page navigation" }}">
+      {{ range .items }}<a href="{{ .href }}">{{ .label }}</a>{{ end }}
+    </nav>
+    {{ with .buy_label }}<a class="button button-small" href="{{ $cta }}">{{ . }}</a>{{ end }}
+    {{ end }}
+  </header>
+
+  <main id="top">
+    {{ with .Params.hero }}
+    <section class="hero shell">
+      <div class="hero-copy">
+        {{ range .badges }}<p class="eyebrow">{{ . }}</p>{{ end }}
+        <h1>{{ with .headline_lead }}{{ . }} {{ end }}{{ with .headline_emphasis }}<em>{{ . }}</em>{{ else }}{{ .headline }}{{ end }}</h1>
+        {{ with .subhead }}<p class="lede">{{ . }}</p>{{ end }}
+        <div class="buy-row">
+          {{ with .cta_label }}<a class="button" href="{{ $cta }}">{{ . }} →</a>{{ end }}
+          <div>
+            {{ with $.Params.product.price_display }}<strong>{{ . }}</strong>{{ end }}
+            {{ with .delivery_note }}<small>{{ . }}</small>{{ end }}
+          </div>
+        </div>
+      </div>
+      {{ with $.Params.cover }}
+      <figure class="book-figure">
+        {{ $img := resources.Get .image }}
+        {{ if $img }}<img src="{{ $img.RelPermalink }}" alt="{{ .alt | default $.Title }}" loading="eager" width="640" height="900">
+        {{ else }}<div class="book" role="img" aria-label="{{ .alt | default $.Title }}"><i></i><small>{{ .category }}</small><h2>{{ .title }}</h2><p>{{ .description }}</p></div>{{ end }}
+        {{ with .caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+      </figure>
+      {{ end }}
+    </section>
+    {{ end }}
+
+    {{ with .Params.problem }}
+    <section class="band surface" id="problem"><div class="split shell">
+      <header>{{ with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}<h2>{{ .headline }}</h2></header>
+      <div>
+        {{ with .situation }}<ol class="ruled">{{ range . }}<li>{{ . }}</li>{{ end }}</ol>{{ end }}
+        {{ with .lead_in }}<p>{{ . }}</p>{{ end }}
+        {{ with .question }}<blockquote>{{ . }}</blockquote>{{ end }}
+        {{ with .conclusion }}<p>{{ . }} {{ with $.Params.problem.conclusion_emphasis }}<strong>{{ . }}</strong>{{ end }}</p>{{ end }}
+      </div>
+    </div></section>
+    {{ end }}
+
+    {{ with .Params.framework }}
+    <section class="band shell" id="framework">
+      {{ with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+      <h2>{{ .title }}</h2>
+      <div class="framework-layout" data-framework>
+        <div class="diagram" role="group" aria-label="{{ .title }}">
+          {{ range $i, $item := .items }}
+          <button type="button" class="diagram-circle diagram-circle-{{ add $i 1 }}{{ if eq $i 0 }} is-active{{ end }}" aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}" aria-controls="framework-row-{{ $i }}" data-framework-circle="{{ $i }}"><span>{{ $item.title }}</span></button>
+          {{ end }}
+          {{ with .center_label }}<button type="button" class="diagram-center" aria-pressed="false" aria-controls="framework-highlight" data-framework-center>{{ . }}</button>{{ end }}
+        </div>
+        <div class="framework-list">
+          {{ range $i, $item := .items }}<button type="button" id="framework-row-{{ $i }}" class="framework-row{{ if eq $i 0 }} is-active{{ end }}" aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}" data-framework-row="{{ $i }}"><span>0{{ add $i 1 }}</span><span><strong>{{ .title }}</strong><b>{{ .question }}</b>{{ with .definition }}<small>{{ . }}</small>{{ end }}</span></button>{{ end }}
+          {{ with .highlight }}<blockquote id="framework-highlight" tabindex="-1">{{ . }}</blockquote>{{ end }}
+        </div>
+      </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.promise }}
+    <section class="band inverse" id="promise"><div class="split shell">
+      <header>{{ with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}<h2>{{ .headline }}</h2></header>
+      <ol class="ruled">{{ range .questions }}<li>{{ . }}</li>{{ end }}</ol>
+    </div></section>
+    {{ end }}
+
+    {{ with .Params.what_you_get }}
+    <section class="band shell" id="inside">
+      {{ with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+      <h2>{{ .headline }}</h2>
+      {{ with .lead_in }}<p class="lede">{{ . }}</p>{{ end }}
+      <div class="card-grid">{{ range .items }}<article><h3>{{ .title }}</h3><p>{{ .description }}</p></article>{{ end }}</div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.screenshots }}
+    <section class="band surface" id="preview"><div class="shell">
+      {{ with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+      <h2>{{ .headline }}</h2>
+      <div class="carousel" data-carousel>
+        <div class="carousel-viewport" tabindex="0" data-carousel-viewport>
+          {{ range $i, $item := .items }}
+          <article class="carousel-slide" id="preview-slide-{{ $i }}" data-carousel-slide="{{ $i }}">
+            <div class="workbook-spread">
+              <div class="workbook-page workbook-intro">
+                {{ with .step }}<p class="workbook-kicker">{{ $.Params.screenshots.part_label | default "Part" }} {{ . }}</p>{{ end }}
+                <h3>{{ .caption }}</h3>
+                {{ with .prompt }}<p class="workbook-prompt">{{ . }}</p>{{ end }}
+                <span class="workbook-page-number">{{ add 12 (mul $i 4) }}</span>
+              </div>
+              <div class="workbook-page workbook-working">
+                <p class="workbook-kicker working-label">{{ $.Params.screenshots.working_page_label | default "Working page" }}</p>
+                <div class="workbook-steps">
+                  {{ range $stepIndex, $line := .lines }}
+                  <div class="workbook-step"><div><span>{{ add $stepIndex 1 }}</span><p>{{ $line }}</p></div><i></i><i></i><i></i></div>
+                  {{ end }}
+                </div>
+              </div>
+            </div>
+            <div class="carousel-caption">
+              <p class="carousel-caption-kicker">{{ $.Params.screenshots.counter_label | default "Workbook preview" }} {{ add $i 1 }} / {{ len $.Params.screenshots.items }}</p>
+              <h3>{{ $item.caption }}</h3>
+              {{ with $item.prompt }}<p class="carousel-caption-prompt">{{ . }}</p>{{ end }}
+            </div>
+          </article>
+          {{ end }}
+        </div>
+        <div class="carousel-controls">
+          <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Previous page">←</button>
+          <div class="carousel-dots" role="tablist" aria-label="Preview pages">
+            {{ range $i, $item := .items }}<button type="button" class="carousel-dot{{ if eq $i 0 }} is-active{{ end }}" role="tab" aria-label="{{ .caption }}" aria-controls="preview-slide-{{ $i }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}" data-carousel-dot="{{ $i }}"></button>{{ end }}
+          </div>
+          <p class="carousel-counter" aria-live="polite">Page <span data-carousel-current>1</span> of <span data-carousel-total>{{ len .items }}</span></p>
+          <button type="button" class="carousel-arrow" data-carousel-next aria-label="Next page">→</button>
+        </div>
+      </div>
+      {{ with .closing }}<p class="center lede">{{ . }}</p>{{ end }}
+    </div></section>
+    {{ end }}
+
+    {{ with .Content }}<section class="band shell prose" id="narrative">{{ . }}</section>{{ end }}
+
+    {{ with .Params.audience }}
+    <section class="audience" id="fit">
+      {{ with .for_you }}
+      <article>
+        {{ with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}<h2>{{ .headline }}</h2>
+        {{ with .lead_in }}<p>{{ . }}</p>{{ end }}
+        <ul class="checklist">{{ range .criteria }}<li>{{ . }}</li>{{ end }}</ul>
+        {{ with .context }}<p>{{ . }}</p>{{ end }}
+        {{ with .callout }}<blockquote>{{ . }}</blockquote>{{ end }}
+      </article>
+      {{ end }}
+      {{ with .not_for_you }}
+      <article class="surface">
+        {{ with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}<h2>{{ .headline }}</h2>
+        {{ with .lead_in }}<p>{{ . }}</p>{{ end }}
+        <ul class="plain-list">{{ range .criteria }}<li>{{ . }}</li>{{ end }}</ul>
+        {{ with .callout }}<blockquote>{{ . }}</blockquote>{{ end }}
+      </article>
+      {{ end }}
+    </section>
+    {{ end }}
+
+    {{ with .Params.author }}
+    <section class="band shell split" id="author">
+      <header>
+        {{ with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+        {{ $portrait := resources.Get (.image | default "") }}
+        {{ if $portrait }}<img class="portrait" src="{{ $portrait.RelPermalink }}" alt="{{ .name }}" loading="lazy">
+        {{ else }}<div class="monogram" role="img" aria-label="{{ .name }}">{{ substr .name 0 1 }}</div>{{ end }}
+      </header>
+      <div>
+        <h2>{{ .headline | default .name }}</h2>
+        {{ range .bio }}<p>{{ . }}</p>{{ end }}
+        {{ with .credentials }}<ul class="plain-list">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+        {{ with .role }}<p class="eyebrow">{{ . }}</p>{{ end }}
+      </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.offer }}
+    <section class="band surface" id="offer"><div class="offer shell">
+      <header class="offer-heading">
+        {{ with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+        <h2>{{ .title }}</h2>
+        {{ with .subtitle }}<p class="lede">{{ . }}</p>{{ end }}
+      </header>
+      {{ with $.Params.product.price_display }}<strong class="offer-price">{{ . }}</strong>{{ end }}
+      {{ with .checklist }}<ul class="checklist offer-checklist">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+      <div class="offer-action">
+        {{ with .cta_label }}<a class="button" href="{{ $cta }}"{{ if hasPrefix $cta "http" }} rel="noopener" target="_blank"{{ end }}>{{ . }} →</a>{{ end }}
+        {{ with .microcopy }}<small>{{ . }}</small>{{ end }}
+      </div>
+    </div></section>
+    {{ end }}
+
+    {{ with .Params.final_cta }}
+    <section class="final"><div class="shell">
+      <h2>{{ .headline }}</h2>
+      {{ with .title }}<p>{{ . }}</p>{{ end }}
+      {{ with $.Params.product.price_display }}<strong>{{ . }}</strong>{{ end }}
+      {{ with .button_label }}<a class="button dark" href="{{ $cta }}"{{ if hasPrefix $cta "http" }} rel="noopener" target="_blank"{{ end }}>{{ . }} →</a>{{ end }}
+      {{ with $.Params.consulting }}
+      <div class="final-consulting">
+        <p>{{ .headline }}</p>
+        <a href="{{ .url }}">{{ .link_text }} <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="15" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right h-4 w-4" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:238:725"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+      </div>
+      {{ end }}
+    </div></section>
+    {{ end }}
+  </main>
+
+  <footer class="footer shell">
+    {{ with .Params.footer }}<p><strong>{{ .author }}</strong>{{ with .role }} · {{ . }}{{ end }}</p>{{ end }}
+    <p>&copy; {{ now.Year }}</p>
+  </footer>
+  <script>
+    (() => {
+      document.querySelectorAll('[data-framework]').forEach((framework) => {
+        const circles = Array.from(framework.querySelectorAll('[data-framework-circle]'));
+        const rows = Array.from(framework.querySelectorAll('[data-framework-row]'));
+        const center = framework.querySelector('[data-framework-center]');
+        const highlight = framework.querySelector('#framework-highlight');
+
+        const activate = (index, moveFocus = false) => {
+          circles.forEach((circle, circleIndex) => {
+            const active = circleIndex === index;
+            circle.classList.toggle('is-active', active);
+            circle.setAttribute('aria-pressed', String(active));
+          });
+          rows.forEach((row, rowIndex) => {
+            const active = rowIndex === index;
+            row.classList.toggle('is-active', active);
+            row.setAttribute('aria-pressed', String(active));
+          });
+          center?.classList.remove('is-active');
+          center?.setAttribute('aria-pressed', 'false');
+          highlight?.classList.remove('is-active');
+          if (moveFocus) circles[index]?.focus();
+        };
+
+        circles.forEach((circle, index) => {
+          circle.addEventListener('click', () => activate(index));
+          circle.addEventListener('keydown', (event) => {
+            if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+            event.preventDefault();
+            const previous = event.key === 'ArrowLeft' || event.key === 'ArrowUp';
+            const nextIndex = event.key === 'Home' ? 0 : event.key === 'End' ? circles.length - 1 : (index + (previous ? -1 : 1) + circles.length) % circles.length;
+            activate(nextIndex, true);
+          });
+        });
+        rows.forEach((row, index) => row.addEventListener('click', () => activate(index)));
+
+        center?.addEventListener('click', () => {
+          circles.forEach((circle) => { circle.classList.remove('is-active'); circle.setAttribute('aria-pressed', 'false'); });
+          rows.forEach((row) => { row.classList.remove('is-active'); row.setAttribute('aria-pressed', 'false'); });
+          center.classList.add('is-active');
+          center.setAttribute('aria-pressed', 'true');
+          highlight?.classList.add('is-active');
+          highlight?.focus({ preventScroll: true });
+        });
+      });
+
+      document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+        const viewport = carousel.querySelector('[data-carousel-viewport]');
+        const slides = Array.from(carousel.querySelectorAll('[data-carousel-slide]'));
+        const dots = Array.from(carousel.querySelectorAll('[data-carousel-dot]'));
+        const current = carousel.querySelector('[data-carousel-current]');
+        const previous = carousel.querySelector('[data-carousel-prev]');
+        const next = carousel.querySelector('[data-carousel-next]');
+        let activeIndex = 0;
+
+        if (!viewport || !slides.length) return;
+
+        const syncActive = (index) => {
+          activeIndex = Math.max(0, Math.min(index, slides.length - 1));
+          dots.forEach((dot, dotIndex) => {
+            const active = dotIndex === activeIndex;
+            dot.classList.toggle('is-active', active);
+            dot.setAttribute('aria-selected', String(active));
+          });
+          slides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === activeIndex));
+          if (current) current.textContent = String(activeIndex + 1);
+          if (previous) previous.disabled = activeIndex === 0;
+          if (next) next.disabled = activeIndex === slides.length - 1;
+        };
+
+        const goTo = (index) => {
+          const targetIndex = Math.max(0, Math.min(index, slides.length - 1));
+          activeIndex = targetIndex;
+          syncActive(targetIndex);
+          const target = slides[targetIndex];
+          viewport.scrollTo({ left: target.offsetLeft - viewport.offsetLeft, behavior: 'smooth' });
+        };
+
+        previous?.addEventListener('click', () => goTo(activeIndex - 1));
+        next?.addEventListener('click', () => goTo(activeIndex + 1));
+        dots.forEach((dot, index) => dot.addEventListener('click', () => goTo(index)));
+        viewport.addEventListener('keydown', (event) => {
+          if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+          event.preventDefault();
+          goTo(activeIndex + (event.key === 'ArrowRight' ? 1 : -1));
+        });
+        const observer = new IntersectionObserver((entries) => {
+          const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (!visible) return;
+          const index = Number(visible.target.getAttribute('data-carousel-slide'));
+          if (Number.isFinite(index)) syncActive(index);
+        }, { root: viewport, threshold: [0.55, 0.7, 0.9] });
+        slides.forEach((slide) => observer.observe(slide));
+        syncActive(0);
+      });
+    })();
+  </script>
+</body>
+</html>

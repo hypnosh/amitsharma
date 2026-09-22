@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 900" width="640" height="900" role="img" aria-label="The Product Market Fit Primer cover">
+  <rect width="640" height="900" fill="#07111b"/>
+  <rect x="14" y="14" width="612" height="872" fill="none" stroke="#f1f5f9" stroke-width="6"/>
+  <rect x="72" y="92" width="96" height="6" fill="#e75608"/>
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" fill="#f1f5f9">
+    <text x="72" y="152" font-size="18" font-weight="700" letter-spacing="4" fill="#718196">A FOUNDER'S WORKBOOK</text>
+    <text x="72" y="286" font-size="72" font-weight="700">The Product</text>
+    <text x="72" y="356" font-size="72" font-weight="700">Market Fit</text>
+    <text x="72" y="426" font-size="72" font-weight="400" fill="#718196">Primer</text>
+  </g>
+  <g font-family="Georgia, serif" fill="#a8b5c5" font-size="22">
+    <text x="72" y="510">A practical framework for finding the</text>
+    <text x="72" y="542">intersection between what you can build,</text>
+    <text x="72" y="574">what your market needs, and what it</text>
+    <text x="72" y="606">will actually pay for.</text>
+  </g>
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#718196" letter-spacing="2">
+    <text x="72" y="690">TECHNOLOGY × AUDIENCE NEED × WILLINGNESS TO PAY × FOUNDER EXPERTISE</text>
+  </g>
+  <line x1="72" y1="782" x2="568" y2="782" stroke="#293746" stroke-width="2"/>
+  <text x="72" y="818" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#718196" letter-spacing="3">AMIT SHARMA · FRACTIONAL PRODUCT OPERATOR</text>
+</svg>

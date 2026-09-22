@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640" role="img" aria-label="Four-circle Product Market Fit framework">
+  <rect width="640" height="640" fill="#07111b"/>
+  <g fill="#0d1925" fill-opacity="0.72" stroke="#293746">
+    <circle cx="250" cy="250" r="170"/>
+    <circle cx="390" cy="250" r="170"/>
+    <circle cx="250" cy="390" r="170"/>
+    <circle cx="390" cy="390" r="170"/>
+  </g>
+  <circle cx="320" cy="320" r="72" fill="#07111b" stroke="#e75608"/>
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#a8b5c5" text-anchor="middle" letter-spacing="1.6">
+    <text x="176" y="176">TECHNOLOGY</text>
+    <text x="466" y="176">AUDIENCE NEED</text>
+    <text x="164" y="478">WILLINGNESS</text>
+    <text x="164" y="500">TO PAY</text>
+    <text x="474" y="478">FOUNDER</text>
+    <text x="474" y="500">EXPERTISE</text>
+  </g>
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#f1f5f9" text-anchor="middle" letter-spacing="1.4">
+    <text x="320" y="315">PMF</text>
+    <text x="320" y="336">OPPORTUNITY</text>
+  </g>
+</svg>

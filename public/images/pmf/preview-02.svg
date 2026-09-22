@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Technology worksheet page">
+  <rect width="600" height="800" fill="#f3efe7"/>
+  <rect x="40" y="40" width="520" height="720" fill="none" stroke="#ded6c6" stroke-width="2"/>
+  <rect x="60" y="80" width="64" height="5" fill="#e75608"/>
+  <text x="60" y="130" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#e75608" letter-spacing="3">PART 02</text>
+  <text x="60" y="186" font-family="Georgia, serif" font-size="36" fill="#17202b">Technology worksheet</text>
+  <text x="60" y="250" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#17202b" letter-spacing="1">What can we build?</text><line x1="60" y1="284" x2="540" y2="284" stroke="#c7bfae" stroke-width="2"/><line x1="60" y1="334" x2="540" y2="334" stroke="#c7bfae" stroke-width="2"/><text x="60" y="400" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#17202b" letter-spacing="1">What is distinctive?</text><line x1="60" y1="434" x2="540" y2="434" stroke="#c7bfae" stroke-width="2"/><line x1="60" y1="484" x2="540" y2="484" stroke="#c7bfae" stroke-width="2"/><text x="60" y="550" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#17202b" letter-spacing="1">What must be true?</text><line x1="60" y1="584" x2="540" y2="584" stroke="#c7bfae" stroke-width="2"/><line x1="60" y1="634" x2="540" y2="634" stroke="#c7bfae" stroke-width="2"/>
+  <text x="60" y="740" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#8b8371" letter-spacing="2">THE PRODUCT MARKET FIT PRIMER</text>
+</svg>
