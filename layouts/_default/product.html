@@ -8,7 +8,15 @@
   {{ with .Params.seo.og_title | default .Title }}<meta property="og:title" content="{{ . }}">{{ end }}
   {{ with .Params.seo.og_description | default .Params.description }}<meta property="og:description" content="{{ . }}">{{ end }}
   <meta property="og:type" content="{{ .Params.seo.og_type | default "product" }}">
-  {{ with .Params.seo.og_image }}{{ with resources.Get . }}<meta property="og:image" content="{{ .Permalink }}">{{ else }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}{{ end }}
+  {{ with .Params.seo.og_image }}
+    {{ with resources.Get . }}
+      <meta property="og:image" content="{{ .Permalink }}">
+      <link rel="favicon" href="{{ .Permalink }}">
+    {{ else }}
+      <meta property="og:image" content="{{ . | absURL }}">
+      <link rel="favicon" href="{{ . | absURL }}">
+    {{ end }}
+  {{ end }}
   <meta name="twitter:card" content="{{ .Params.seo.twitter_card | default "summary_large_image" }}">
   <link rel="canonical" href="{{ .Permalink }}">
   {{ with resources.Get "css/product.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
@@ -18,21 +26,21 @@
   </script>
   {{ end }}
   {{ with .Site.Params.analytics.gtm }}
-<!-- Google Tag Manager -->
-<script>
-(function(w,d,s,l,i){
-    w[l]=w[l]||[];
-    w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-    var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),
-        dl=l!='dataLayer'?'&l='+l:'';
-    j.async=true;
-    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-    f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','{{ . }}');
-</script>
-<!-- End Google Tag Manager -->
-{{ end }}
+    <!-- Google Tag Manager -->
+    <script>
+    (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),
+            dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','{{ . }}');
+    </script>
+    <!-- End Google Tag Manager -->
+  {{ end }}
 </head>
 <body>
   {{ $cta := .Params.purchase_url | default "#offer" }}
