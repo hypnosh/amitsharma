@@ -11,7 +11,7 @@ seo:
   og_title: "The Product Market Fit Primer"
   og_description: "A founder's workbook by Amit Sharma. Digital PDF, ₹1,999. Instant delivery."
   og_type: "product"
-  og_image: "images/pmf/framework.svg"
+  og_image: "images/pmf/framework.png"
   twitter_card: "summary_large_image"
 
 product:
