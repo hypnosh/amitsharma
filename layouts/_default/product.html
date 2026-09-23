@@ -17,6 +17,22 @@
     {{ dict "@context" "https://schema.org" "@type" "Product" "name" .title "description" $.Params.description "offers" (dict "@type" "Offer" "price" .price_amount "priceCurrency" .currency "url" $.Params.purchase_url) | jsonify | safeJS }}
   </script>
   {{ end }}
+  {{ with .Site.Params.analytics.gtm }}
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){
+    w[l]=w[l]||[];
+    w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),
+        dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;
+    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','{{ . }}');
+</script>
+<!-- End Google Tag Manager -->
+{{ end }}
 </head>
 <body>
   {{ $cta := .Params.purchase_url | default "#offer" }}
@@ -26,9 +42,11 @@
     <a class="brand" href="#top"><span class="brand-mark"></span>{{ .brand | default $.Title }}</a>
     <nav aria-label="{{ .label | default "Page navigation" }}">
       {{ range .items }}<a href="{{ .href }}">{{ .label }}</a>{{ end }}
+      <a href="/">Home</a>
     </nav>
     {{ with .buy_label }}<a class="button button-small" href="{{ $cta }}">{{ . }}</a>{{ end }}
     {{ end }}
+    
   </header>
 
   <main id="top">
@@ -215,7 +233,7 @@
       {{ with $.Params.consulting }}
       <div class="final-consulting">
         <p>{{ .headline }}</p>
-        <a href="{{ .url }}">{{ .link_text }} <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="15" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right h-4 w-4" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:238:725"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+        <p><a href="{{ .url }}">{{ .link_text }} <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="15" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right h-4 w-4" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:238:725"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></p>
       </div>
       {{ end }}
     </div></section>
@@ -223,7 +241,7 @@
   </main>
 
   <footer class="footer shell">
-    {{ with .Params.footer }}<p><strong>{{ .author }}</strong>{{ with .role }} · {{ . }}{{ end }}</p>{{ end }}
+    {{ with .Params.footer }}<p><a href="/"><strong>{{ .author }}</strong>{{ with .role }} · {{ . }}{{ end }}</a></p>{{ end }}
     <p>&copy; {{ now.Year }}</p>
   </footer>
   <script>

@@ -62,6 +62,13 @@ nav a:hover {
     background: #eee;
 }
 
+nav a.highlight:after {
+    content: "*";
+    color: red;
+    vertical-align: top;
+    margin-left: .2rem;
+}
+
 nav,
 button,
 .buttons,
