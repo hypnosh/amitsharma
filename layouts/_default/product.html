@@ -22,7 +22,7 @@
   {{ with resources.Get "css/product.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
   {{ with .Params.product }}
   <script type="application/ld+json">
-    {{ dict "@context" "https://schema.org" "@type" "Product" "name" .title "description" $.Params.description "offers" (dict "@type" "Offer" "price" .price_amount "priceCurrency" .currency "url" $.Params.purchase_url) | jsonify | safeJS }}
+    {{ dict "@context" "https://schema.org" "@type" "Product" "name" .title "description" $.Params.description "offers" (dict "@type" "Offer" "price" .price_amount "priceCurrency" .currency "url" $.Params.purchase_url "availability" "https://schema.org/InStock") "hasMerchantReturnPolicy" (dict "@type" "MerchantReturnPolicy" "applicableCountry" "IN" "returnPolicyCategory" "https://schema.org/MerchantReturnNotPermitted") | jsonify | safeJS }}
   </script>
   {{ end }}
   {{ with .Site.Params.analytics.gtm }}
