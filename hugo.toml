@@ -13,3 +13,10 @@ title = 'Amit Sharma - Digital Product Leader'
 
 [params.analytics]
   gtm = "GTM-PZLNJQ45"
+
+[params.person]
+  name = "Amit Sharma"
+  jobTitle = "Digital Product Leader"
+  linkedin = "https://www.linkedin.com/in/sharmakamit/"
+  github = "https://www.github.com/hypnosh"
+  image = "images/pmf/amit.jpg"

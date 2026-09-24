@@ -46,6 +46,24 @@
 
 {{ $style := resources.Get "css/styles.css" | resources.Minify | fingerprint }}
 
+{{ if eq .RelPermalink "/about/" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ .Site.Params.person.name }},
+  "url": {{ .Permalink }},
+  "jobTitle": {{ .Site.Params.person.jobTitle }},
+  "description": {{ .Description }},
+  "image": {{ .Site.Params.person.image | absURL }}
+  "sameAs": [
+    {{ .Site.Params.person.linkedin }},
+    {{ .Site.Params.person.github }}
+  ]
+}
+</script>
+{{ end }}
+
 <link
     rel="stylesheet"
     href="{{ $style.RelPermalink }}">
