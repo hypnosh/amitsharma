@@ -2,7 +2,7 @@
     --text: #111;
     --bg: #fff;
     --accent: #2563eb;
-    --max: 760px;
+    --max: 860px;
 
     --font-ui: Inter, system-ui, sans-serif;
     --font-body: "Source Serif 4", "Source Serif Pro", Garamond, Times, serif;
@@ -278,7 +278,21 @@ footer {
     font-size: 0.8rem;
 }
 
-@media (max-width: 700px) {
+.randomlink-in-footer {
+    font-size: smaller;
+}
+
+.posts-list a {
+    text-decoration: none;
+}
+.posts-list a, .posts-list a:visited {
+    color:#1533ab;
+}
+.posts-list a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 860px) {
     .testimonials-grid {
         grid-template-columns: 1fr;
         gap: 2.5rem;
@@ -292,18 +306,4 @@ footer {
     nav {
         flex-wrap: wrap;
     }
-}
-
-.randomlink-in-footer {
-    font-size: smaller;
-}
-
-.posts-list a {
-    text-decoration: none;
-}
-.posts-list a, .posts-list a:visited {
-    color:#1533ab;
-}
-.posts-list a:hover {
-    text-decoration: underline;
 }
