@@ -205,7 +205,7 @@ offer:
   eyebrow: "The offer"
   title: "The Product Market Fit Primer"
   subtitle: "A founder's workbook"
-  cta_label: "Get the Primer for ₹1,999"
+  cta_label: "Get the Primer for ₹1,999+GST"
   microcopy: "Instant digital delivery."
   checklist:
     - "The complete digital PDF"

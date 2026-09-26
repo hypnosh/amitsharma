@@ -144,7 +144,7 @@ blockquote { margin: 2rem 0; padding-left: 1.5rem; border-left: 2px solid var(--
 .final { padding-block: 84pt; background: var(--terracotta); color: var(--ink); text-align: center; }
 .final h2 { max-width: 720pt; margin: 0 auto; font-size: 48pt; line-height: 1.04; }
 .final > .shell > p { margin: 25pt 0 0; font-size: 18pt; line-height: 1.35; }
-.final strong { display: block; width: fit-content; margin: 12pt auto 0; font-size: 30pt; font-weight: 600; line-height: 1; }
+.final strong { display: inline-block; width: fit-content; margin: 12pt auto 0; font-size: 30pt; font-weight: 600; line-height: 1; }
 .final .button { display: inline-flex; width: auto; min-height: 42pt; margin: 24pt auto 0; padding: 12pt 21pt; }
 .button.dark { background: var(--ink); color: var(--midnight); }
 .final-consulting { margin-top: 27pt; font-size: 13pt; line-height: 1.45; }

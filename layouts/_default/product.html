@@ -67,7 +67,7 @@
         <div class="buy-row">
           {{ with .cta_label }}<a class="button" href="{{ $cta }}">{{ . }} →</a>{{ end }}
           <div>
-            {{ with $.Params.product.price_display }}<strong>{{ . }}</strong>{{ end }}
+            {{ with $.Params.product.price_display }}<strong>{{ . }}</strong> <small>+ GST</small>{{ end }}
             {{ with .delivery_note }}<small>{{ . }}</small>{{ end }}
           </div>
         </div>
@@ -223,7 +223,7 @@
         <h2>{{ .title }}</h2>
         {{ with .subtitle }}<p class="lede">{{ . }}</p>{{ end }}
       </header>
-      {{ with $.Params.product.price_display }}<strong class="offer-price">{{ . }}</strong>{{ end }}
+      {{ with $.Params.product.price_display }}<strong class="offer-price">{{ . }} <br><small> + GST</small></strong>{{ end }}
       {{ with .checklist }}<ul class="checklist offer-checklist">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
       <div class="offer-action">
         {{ with .cta_label }}<a class="button" href="{{ $cta }}"{{ if hasPrefix $cta "http" }} rel="noopener" target="_blank"{{ end }}>{{ . }} →</a>{{ end }}
@@ -236,7 +236,7 @@
     <section class="final"><div class="shell">
       <h2>{{ .headline }}</h2>
       {{ with .title }}<p>{{ . }}</p>{{ end }}
-      {{ with $.Params.product.price_display }}<strong>{{ . }}</strong>{{ end }}
+      <p>{{ with $.Params.product.price_display }}<strong>{{ . }}</strong> <small>+ GST</small>{{ end }}</p>
       {{ with .button_label }}<a class="button dark" href="{{ $cta }}"{{ if hasPrefix $cta "http" }} rel="noopener" target="_blank"{{ end }}>{{ . }} →</a>{{ end }}
       {{ with $.Params.consulting }}
       <div class="final-consulting">
