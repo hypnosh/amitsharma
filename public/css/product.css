@@ -91,7 +91,7 @@ blockquote { margin: 2rem 0; padding-left: 1.5rem; border-left: 2px solid var(--
 .carousel { position: relative; }
 .carousel-viewport { display: flex; gap: 24pt; overflow-x: auto; padding: 3pt 3pt 22pt; scroll-behavior: smooth; scroll-snap-type: x mandatory; scrollbar-color: var(--terracotta) var(--line); scrollbar-width: thin; }
 .carousel-viewport:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 5pt; }
-.carousel-slide { display: grid; flex: 0 0 100%; grid-template-columns: minmax(0, 1fr) 225pt; align-items: center; gap: 30pt; min-width: 0; padding: 3pt; scroll-snap-align: start; scroll-snap-stop: always; }
+.carousel-slide { display: grid; flex: 0 0 100%; grid-template-columns: minmax(0, 1fr) 45%; align-items: center; gap: 30pt; min-width: 0; padding: 3pt; scroll-snap-align: start; scroll-snap-stop: always; }
 .carousel-caption { display: block; min-width: 0; visibility: visible; opacity: 1; }
 .carousel-caption-kicker { margin: 0; color: var(--terracotta); font: 700 7.5pt/1 var(--sans); text-transform: uppercase; letter-spacing: .2em; }
 .carousel-caption h3 { margin: 12pt 0 0; color: var(--ink); font: 400 24pt/1.15 var(--serif); }

@@ -145,14 +145,14 @@
                 {{ with .prompt }}<p class="workbook-prompt">{{ . }}</p>{{ end }}
                 <span class="workbook-page-number">{{ add 12 (mul $i 4) }}</span>
               </div>
-              <div class="workbook-page workbook-working">
-                <p class="workbook-kicker working-label">{{ $.Params.screenshots.working_page_label | default "Working page" }}</p>
-                <div class="workbook-steps">
+              <!-- <div class="workbook-page workbook-working"> -->
+                <!-- <p class="workbook-kicker working-label">{{ $.Params.screenshots.working_page_label | default "Working page" }}</p> -->
+                <!-- <div class="workbook-steps">
                   {{ range $stepIndex, $line := .lines }}
                   <div class="workbook-step"><div><span>{{ add $stepIndex 1 }}</span><p>{{ $line }}</p></div><i></i><i></i><i></i></div>
                   {{ end }}
-                </div>
-              </div>
+                </div> -->
+              <!-- </div> -->
             </div>
             <div class="carousel-caption">
               <p class="carousel-caption-kicker">{{ $.Params.screenshots.counter_label | default "Workbook preview" }} {{ add $i 1 }} / {{ len $.Params.screenshots.items }}</p>
