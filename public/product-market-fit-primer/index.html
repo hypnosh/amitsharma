@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Product Market Fit Primer — A Founder&#39;s Workbook by Amit Sharma</title>
@@ -10,16 +10,16 @@
   <meta property="og:type" content="product">
   
     
-      <meta property="og:image" content="http://localhost:1313/images/pmf/framework.png">
-      <link rel="favicon" href="http://localhost:1313/images/pmf/framework.png">
+      <meta property="og:image" content="https://www.amitsharma.tech/images/pmf/framework.png">
+      <link rel="favicon" href="https://www.amitsharma.tech/images/pmf/framework.png">
     
   
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="http://localhost:1313/product-market-fit-primer/">
+  <link rel="canonical" href="https://www.amitsharma.tech/product-market-fit-primer/">
   <link rel="stylesheet" href="/css/product.css">
   
   <script type="application/ld+json">P
-    {"@context":"https://schema.org","@type":"Product","description":"A practical founder's workbook for testing your audience, the problem, willingness to pay, and your Product Market Fit hypothesis.","image":"http://localhost:1313/images/pmf/framework.png","name":"The Product Market Fit Primer","offers":{"@type":"Offer","availability":"https://schema.org/InStock","hasMerchantReturnPolicy":{"@type":"MerchantReturnPolicy","applicableCountry":"IN","returnPolicyCategory":"https://schema.org/MerchantReturnNotPermitted"},"price":1999,"priceCurrency":"INR","url":"https://www.kelviq.com/buy/6f4387d8-22a7-4205-8994-30bde01e6b13/?enabled=own-it-forever\u0026plan_identifier=own-it-forever\u0026charge_period=ONE_TIME"}}
+    {"@context":"https://schema.org","@type":"Product","description":"A practical founder's workbook for testing your audience, the problem, willingness to pay, and your Product Market Fit hypothesis.","image":"https://www.amitsharma.tech/images/pmf/framework.png","name":"The Product Market Fit Primer","offers":{"@type":"Offer","availability":"https://schema.org/InStock","hasMerchantReturnPolicy":{"@type":"MerchantReturnPolicy","applicableCountry":"IN","returnPolicyCategory":"https://schema.org/MerchantReturnNotPermitted"},"price":1999,"priceCurrency":"INR","url":"https://www.kelviq.com/buy/6f4387d8-22a7-4205-8994-30bde01e6b13/?enabled=own-it-forever\u0026plan_identifier=own-it-forever\u0026charge_period=ONE_TIME"}}
   </script>
   
   
@@ -38,6 +38,51 @@
     </script>
     
   
+  
+  <script>
+    
+    
+    function gtagSendEvent(url) {
+      var callback = function () {
+        if (typeof url === 'string') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'buy_click', {
+        'event_callback': callback,
+        'event_timeout': 2000,
+        'value': 1999,
+        'currency': 'INR'
+      });
+      gtag('event', 'purchase', {
+        'value': 1999,
+        'currency': 'INR'
+      });
+      return false;
+    }
+    
+
+    function bindBuyClickButtons() {
+      document.querySelectorAll('.buy-click').forEach(el => {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          
+          const url = this.dataset.url || this.getAttribute('href');
+
+          if (!url) {
+            console.warn('buy-click element is missing a URL', this);
+            return;
+          }
+          
+          gtagSendEvent(url);
+        });
+      });
+    }
+
+    
+    document.addEventListener('DOMContentLoaded', bindBuyClickButtons);
+  </script>
 </head>
 <body>
   
@@ -49,7 +94,7 @@
       <a href="#framework">Framework</a><a href="#inside">Inside</a><a href="#fit">Who it&#39;s for</a><a href="#author">About Amit</a><a href="#offer">The offer</a>
       <a href="/">Home</a>
     </nav>
-    <a class="button button-small" href="https://www.kelviq.com/buy/6f4387d8-22a7-4205-8994-30bde01e6b13/?enabled=own-it-forever&amp;plan_identifier=own-it-forever&amp;charge_period=ONE_TIME">Get the Primer</a>
+    <a class="button button-small buy-click" href="https://www.kelviq.com/buy/6f4387d8-22a7-4205-8994-30bde01e6b13/?enabled=own-it-forever&amp;plan_identifier=own-it-forever&amp;charge_period=ONE_TIME">Get the Primer</a>
     
     
   </header>
@@ -62,9 +107,9 @@
         <h1>You built it. <em>Will they pay for it?</em></h1>
         <p class="lede">A practical workbook for founders figuring out whether they&#39;re building something a specific market actually needs and will pay for.</p>
         <div class="buy-row">
-          <a class="button" href="https://www.kelviq.com/buy/6f4387d8-22a7-4205-8994-30bde01e6b13/?enabled=own-it-forever&amp;plan_identifier=own-it-forever&amp;charge_period=ONE_TIME">Get the Primer →</a>
+          <a class="button buy-click" href="https://www.kelviq.com/buy/6f4387d8-22a7-4205-8994-30bde01e6b13/?enabled=own-it-forever&amp;plan_identifier=own-it-forever&amp;charge_period=ONE_TIME">Get the Primer →</a>
           <div>
-            <strong>₹1,999</strong> <small>+ taxes</small>
+            <strong>₹1,999</strong>
             <small>Instant digital delivery · PDF</small>
           </div>
         </div>
@@ -317,10 +362,10 @@ willing to question what you think you know.</p>
         <h2>The Product Market Fit Primer</h2>
         <p class="lede">A founder&#39;s workbook</p>
       </header>
-      <strong class="offer-price">₹1,999 <br><small> + taxes</small></strong>
+      <strong class="offer-price">₹1,999</strong>
       <ul class="checklist offer-checklist"><li>The complete digital PDF</li><li>Frameworks and exercises</li><li>Practical worksheets</li><li>Customer discovery questions</li><li>Validation tools</li><li>Your own Product Market Fit hypothesis</li></ul>
       <div class="offer-action">
-        <a class="button" href="https://www.kelviq.com/buy/6f4387d8-22a7-4205-8994-30bde01e6b13/?enabled=own-it-forever&amp;plan_identifier=own-it-forever&amp;charge_period=ONE_TIME" rel="noopener" target="_blank">Get the Primer for ₹1,999&#43;GST →</a>
+        <a class="button buy-click" href="https://www.kelviq.com/buy/6f4387d8-22a7-4205-8994-30bde01e6b13/?enabled=own-it-forever&amp;plan_identifier=own-it-forever&amp;charge_period=ONE_TIME" rel="noopener" target="_blank">Get the Primer for ₹1,999&#43;GST →</a>
         <small>Instant digital delivery.</small>
       </div>
     </div></section>
@@ -330,8 +375,8 @@ willing to question what you think you know.</p>
     <section class="final"><div class="shell">
       <h2>Before you build more, make sure you&#39;re building the right thing.</h2>
       <p>Get the Product Market Fit Primer</p>
-      <p><strong>₹1,999</strong> <small>+ taxes</small></p>
-      <a class="button dark" href="https://www.kelviq.com/buy/6f4387d8-22a7-4205-8994-30bde01e6b13/?enabled=own-it-forever&amp;plan_identifier=own-it-forever&amp;charge_period=ONE_TIME" rel="noopener" target="_blank">Get the Primer →</a>
+      <p><strong>₹1,999</strong></p>
+      <a class="button dark buy-click" href="https://www.kelviq.com/buy/6f4387d8-22a7-4205-8994-30bde01e6b13/?enabled=own-it-forever&amp;plan_identifier=own-it-forever&amp;charge_period=ONE_TIME" rel="noopener" target="_blank">Get the Primer →</a>
       
       <div class="final-consulting">
         <p>Want help applying the framework to your product?</p>

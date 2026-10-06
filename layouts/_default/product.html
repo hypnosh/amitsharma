@@ -41,6 +41,53 @@
     </script>
     <!-- End Google Tag Manager -->
   {{ end }}
+  <!-- Google tag (gtag.js) event - delayed navigation helper -->
+  <script>
+    // Helper function to delay opening a URL until a gtag event is sent.
+    // Call it in response to an action that should navigate to a URL.
+    function gtagSendEvent(url) {
+      var callback = function () {
+        if (typeof url === 'string') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'buy_click', {
+        'event_callback': callback,
+        'event_timeout': 2000,
+        'value': 1999,
+        'currency': 'INR'
+      });
+      gtag('event', 'purchase', {
+        'value': 1999,
+        'currency': 'INR'
+      });
+      return false;
+    }
+    /**
+   * Binds the tracking + delayed navigation to all elements
+   * with the class "buy-click"
+   */
+    function bindBuyClickButtons() {
+      document.querySelectorAll('.buy-click').forEach(el => {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          // Priority: data-url → href → null
+          const url = this.dataset.url || this.getAttribute('href');
+
+          if (!url) {
+            console.warn('buy-click element is missing a URL', this);
+            return;
+          }
+          
+          gtagSendEvent(url);
+        });
+      });
+    }
+
+    // Run after DOM is ready
+    document.addEventListener('DOMContentLoaded', bindBuyClickButtons);
+  </script>
 </head>
 <body>
   {{ $cta := .Params.purchase_url | default "#offer" }}
@@ -52,7 +99,7 @@
       {{ range .items }}<a href="{{ .href }}">{{ .label }}</a>{{ end }}
       <a href="/">Home</a>
     </nav>
-    {{ with .buy_label }}<a class="button button-small" href="{{ $cta }}">{{ . }}</a>{{ end }}
+    {{ with .buy_label }}<a class="button button-small buy-click" href="{{ $cta }}">{{ . }}</a>{{ end }}
     {{ end }}
     
   </header>
@@ -65,7 +112,7 @@
         <h1>{{ with .headline_lead }}{{ . }} {{ end }}{{ with .headline_emphasis }}<em>{{ . }}</em>{{ else }}{{ .headline }}{{ end }}</h1>
         {{ with .subhead }}<p class="lede">{{ . }}</p>{{ end }}
         <div class="buy-row">
-          {{ with .cta_label }}<a class="button" href="{{ $cta }}">{{ . }} →</a>{{ end }}
+          {{ with .cta_label }}<a class="button buy-click" href="{{ $cta }}">{{ . }} →</a>{{ end }}
           <div>
             {{ with $.Params.product.price_display }}<strong>{{ . }}</strong>{{ end }}
             {{ with .delivery_note }}<small>{{ . }}</small>{{ end }}
@@ -226,7 +273,7 @@
       {{ with $.Params.product.price_display }}<strong class="offer-price">{{ . }}</strong>{{ end }}
       {{ with .checklist }}<ul class="checklist offer-checklist">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
       <div class="offer-action">
-        {{ with .cta_label }}<a class="button" href="{{ $cta }}"{{ if hasPrefix $cta "http" }} rel="noopener" target="_blank"{{ end }}>{{ . }} →</a>{{ end }}
+        {{ with .cta_label }}<a class="button buy-click" href="{{ $cta }}"{{ if hasPrefix $cta "http" }} rel="noopener" target="_blank"{{ end }}>{{ . }} →</a>{{ end }}
         {{ with .microcopy }}<small>{{ . }}</small>{{ end }}
       </div>
     </div></section>
@@ -237,7 +284,7 @@
       <h2>{{ .headline }}</h2>
       {{ with .title }}<p>{{ . }}</p>{{ end }}
       <p>{{ with $.Params.product.price_display }}<strong>{{ . }}</strong>{{ end }}</p>
-      {{ with .button_label }}<a class="button dark" href="{{ $cta }}"{{ if hasPrefix $cta "http" }} rel="noopener" target="_blank"{{ end }}>{{ . }} →</a>{{ end }}
+      {{ with .button_label }}<a class="button dark buy-click" href="{{ $cta }}"{{ if hasPrefix $cta "http" }} rel="noopener" target="_blank"{{ end }}>{{ . }} →</a>{{ end }}
       {{ with $.Params.consulting }}
       <div class="final-consulting">
         <p>{{ .headline }}</p>
