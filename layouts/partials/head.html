@@ -26,46 +26,58 @@
 
 {{ with .Site.Params.analytics.gtm }}
 <!-- Google Tag Manager -->
-<script>
-(function(w,d,s,l,i){
-    w[l]=w[l]||[];
-    w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-    var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),
-        dl=l!='dataLayer'?'&l='+l:'';
-    j.async=true;
-    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-    f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','{{ . }}');
-</script>
+    <script>
+    (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),
+            dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','{{ . }}');
+    </script>
 <!-- End Google Tag Manager -->
 {{ end }}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+{{ if eq .Page.RelPermalink "/product-market-fit-primer/success/" }}
+    <script>
+        gtag('event', 'conversion_event_purchase', {
+            'value': 1999,
+            'currency': 'INR'
+        });
+    </script>
+{{ end }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
 
 {{ $style := resources.Get "css/styles.css" | resources.Minify | fingerprint }}
 
 {{ if eq .RelPermalink "/about/" }}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": {{ .Site.Params.person.name }},
-  "url": {{ .Permalink }},
-  "jobTitle": {{ .Site.Params.person.jobTitle }},
-  "description": {{ .Description }},
-  "image": {{ .Site.Params.person.image | absURL }},
-  "sameAs": [
-    {{ .Site.Params.person.linkedin }},
-    {{ .Site.Params.person.github }}
-  ]
-}
-</script>
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": {{ .Site.Params.person.name }},
+    "url": {{ .Permalink }},
+    "jobTitle": {{ .Site.Params.person.jobTitle }},
+    "description": {{ .Description }},
+    "image": {{ .Site.Params.person.image | absURL }},
+    "sameAs": [
+        {{ .Site.Params.person.linkedin }},
+        {{ .Site.Params.person.github }}
+    ]
+    }
+    </script>
 {{ end }}
 
-<link
-    rel="stylesheet"
-    href="{{ $style.RelPermalink }}">
-<link rel="canonical" href="{{ .Permalink }}">
+    <link
+        rel="stylesheet"
+        href="{{ $style.RelPermalink }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+{{ with .Params.robots }}
+    <meta name="robots" content="{{ . }}">
+{{ end }}
 </head>

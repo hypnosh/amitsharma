@@ -23,7 +23,7 @@ product:
   currency: "INR"
   delivery: "Instant digital delivery."
 
-purchase_url: "https://www.kelviq.com/buy/6f4387d8-22a7-4205-8994-30bde01e6b13/?enabled=own-it-forever&plan_identifier=own-it-forever&charge_period=ONE_TIME"
+purchase_url: "https://www.kelviq.com/buy/6f4387d8-22a7-4205-8994-30bde01e6b13/?enabled=own-it-forever&plan_identifier=own-it-forever&charge_period=ONE_TIME&success_url=https%3A%2F%2Fwww.amitsharma.tech%2Fproduct-market-fit-primer%2Fsuccess&cancel_url=https%3A%2F%2Fwww.amitsharma.tech%2Fproduct-market-fit-primer%2F"
 
 navigation:
   brand: "PMF Primer"

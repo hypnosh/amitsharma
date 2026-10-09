@@ -1,42 +1,66 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
   <url>
     <loc>https://www.amitsharma.tech/</loc>
-    <lastmod>2026-10-05T11:37:04+05:30</lastmod>
-  </url><url>
+    <lastmod>2026-10-08T17:35:22+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.amitsharma.tech/posts/</loc>
     <lastmod>2026-10-05T11:37:04+05:30</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.amitsharma.tech/posts/stop-hunting-for-pmf-start-diagnosing-the-fit/</loc>
     <lastmod>2026-10-05T11:37:04+05:30</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.amitsharma.tech/product-market-fit-primer/</loc>
     <lastmod>2026-09-21T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.amitsharma.tech/posts/old-code-old-thinking/</loc>
     <lastmod>2026-09-15T13:22:13+05:30</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.amitsharma.tech/posts/recommendation-without-cta/</loc>
     <lastmod>2026-09-03T16:03:37+05:30</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.amitsharma.tech/posts/zero-trust-better-than-low-trust/</loc>
     <lastmod>2026-09-02T11:19:22+05:30</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.amitsharma.tech/posts/feature-that-killed-the-project/</loc>
     <lastmod>2026-09-01T14:36:48+05:30</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.amitsharma.tech/posts/quick-test-for-startup-idea/</loc>
     <lastmod>2026-08-31T13:52:41+05:30</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.amitsharma.tech/posts/help-im-turning-into-a-services-company/</loc>
     <lastmod>2026-08-20T10:44:59+05:30</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.amitsharma.tech/posts/startup-red-flags-technology-is-not-the-product/</loc>
     <lastmod>2026-08-11T14:56:03+05:30</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.amitsharma.tech/about/</loc>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.amitsharma.tech/r/random/</loc>
   </url>
+  
 </urlset>
