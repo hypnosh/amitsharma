@@ -2,6 +2,8 @@
 title: "Speaking"
 seoTitle: "Amit Sharma | Product Operator, Startup Mentor & Speaker"
 description: "Amit Sharma is a product operator, fractional product leader and startup mentor speaking on product strategy, product-market fit and execution, grounded in 18+ years of experience."
+seo:
+  og_image: "images/speaking-social-preview.png"
 layout: "speaking"
 eyebrow: "Product operator · Startup mentor · Speaker"
 heroHeadline: "Better product decisions begin with better questions."

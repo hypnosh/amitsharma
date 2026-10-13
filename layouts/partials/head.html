@@ -25,6 +25,13 @@
     <meta property="og:description" content="{{ $.Description }}">
     <meta property="og:url" content="{{ $.Permalink }}">
     <meta property="og:type" content="website">
+    {{ with $.Params.seo.og_image }}
+        {{ with resources.Get . }}
+            <meta property="og:image" content="{{ .Permalink }}">
+        {{ else }}
+            <meta property="og:image" content="{{ . | absURL }}">
+        {{ end }}
+    {{ end }}
 {{ end }}
 
 {{ with .Site.Params.analytics.gtm }}
