@@ -113,6 +113,9 @@ main {
     color: #222;
     border-radius: 8px;
 }
+.buttons a i {
+    margin-right: 10px;
+}
 
 .buttons a:hover {
     background: #222;
@@ -305,5 +308,152 @@ footer {
     }
     nav {
         flex-wrap: wrap;
+    }
+}
+
+/* Speaking page: scoped styles keep the rest of the site unchanged. */
+.speaking-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 0;
+}
+
+.speaking-hero {
+    max-width: 760px;
+    padding-bottom: 3.5rem;
+}
+
+.speaking-eyebrow {
+    margin: 0 0 1.25rem;
+    color: #666;
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.speaking-hero h1 {
+    max-width: 18ch;
+    margin: 0 0 1.25rem;
+    font-family: var(--font-body);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.08;
+}
+
+.speaking-intro {
+    max-width: 66ch;
+    margin: 0;
+    color: #555;
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    line-height: 1.7;
+}
+
+.speaking-formats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin: 1.5rem 0 0;
+    padding: 1rem 0 0;
+    border-top: 1px solid #eee;
+    color: #666;
+    font-size: 0.95rem;
+    list-style: none;
+}
+
+.speaking-cta {
+    display: inline-block;
+    margin-top: 1.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #222;
+    border-radius: 4px;
+    color: #222;
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    text-decoration: none;
+}
+
+.speaking-cta:hover,
+.speaking-cta:focus-visible {
+    background: #222;
+    color: #fff;
+}
+
+.speaking-page a:focus-visible {
+    outline: 3px solid #555;
+    outline-offset: 3px;
+}
+
+.speaking-content {
+    max-width: 72ch;
+    padding-top: 0.5rem;
+    border-top: 1px solid #eee;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.75;
+}
+
+.speaking-content h2 {
+    margin: 3.5rem 0 1.25rem;
+    font-family: var(--font-ui);
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.speaking-content h3 {
+    margin: 2.5rem 0 0.6rem;
+    font-family: var(--font-ui);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.speaking-content p,
+.speaking-content ul {
+    margin: 0 0 1.1rem;
+}
+
+.speaking-content ul {
+    padding-left: 1.25rem;
+}
+
+.speaking-content li {
+    margin: 0.65rem 0;
+}
+
+.speaking-content p strong,
+.speaking-content li strong {
+    font-family: var(--font-ui);
+    font-size: 0.96rem;
+    font-weight: 600;
+}
+
+.speaking-content a {
+    color: #222;
+    text-underline-offset: 0.2em;
+}
+
+.speaking-content a:hover {
+    text-decoration-thickness: 2px;
+}
+
+@media (max-width: 600px) {
+    .speaking-page {
+        padding: 2.5rem 1.25rem 0;
+    }
+
+    .speaking-hero {
+        padding-bottom: 2.5rem;
+    }
+
+    .speaking-intro {
+        font-size: 1.08rem;
+    }
+
+    .speaking-content {
+        font-size: 1.02rem;
     }
 }

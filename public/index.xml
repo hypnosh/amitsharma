@@ -92,5 +92,12 @@
       <guid>https://www.amitsharma.tech/r/random/</guid>
       <description></description>
     </item>
+    <item>
+      <title>Speaking</title>
+      <link>https://www.amitsharma.tech/speaking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.amitsharma.tech/speaking/</guid>
+      <description>&lt;h2 id=&#34;talks-for-people-building-products-in-the-real-world&#34;&gt;Talks for people building products in the real world&lt;/h2&gt;&#xA;&lt;h3 id=&#34;01--why-founders-overbuild-before-they-overlearn&#34;&gt;01 · Why Founders Overbuild Before They Overlearn&lt;/h3&gt;&#xA;&lt;p&gt;Capable founders often respond to uncertainty by building more. This session examines how to tell development activity from real learning about what customers need and will pay for.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Audience takeaways:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Identify the riskiest customer and business assumptions behind a product idea.&lt;/li&gt;&#xA;&lt;li&gt;Separate evidence of customer learning from evidence that a team has shipped.&lt;/li&gt;&#xA;&lt;li&gt;Choose a useful next validation step before committing to more build work.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;02--product-decisions-when-everything-seems-important&#34;&gt;02 · Product Decisions When Everything Seems Important&lt;/h3&gt;&#xA;&lt;p&gt;For early-stage founders, product leaders and operators balancing competing demands with limited time and resources. Explore prioritisation, stakeholder pressure and execution bottlenecks, and the discipline required to make consequential choices.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

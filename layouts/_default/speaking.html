@@ -1,0 +1,17 @@
+{{ define "main" }}
+<article class="speaking-page">
+    <section class="speaking-hero" aria-labelledby="speaking-title">
+        <p class="speaking-eyebrow">{{ .Params.eyebrow }}</p>
+        <h1 id="speaking-title">{{ .Params.heroHeadline }}</h1>
+        <p class="speaking-intro">{{ .Params.heroText }}</p>
+        <ul class="speaking-formats" aria-label="Speaking formats">
+            {{ range .Params.formats }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        <a class="speaking-cta" href="{{ .Params.contactURL }}">Discuss a Speaking Engagement</a>
+    </section>
+
+    <div class="speaking-content">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}
