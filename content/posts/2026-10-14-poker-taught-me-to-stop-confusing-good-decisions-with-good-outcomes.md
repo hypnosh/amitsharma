@@ -1,6 +1,6 @@
 ---
 date: '2026-10-14T11:31:58+05:30'
-draft: true
+draft: false
 title: 'Poker Taught Me to Stop Confusing Good Decisions With Good Outcomes'
 description: "How poker taught me to make better business decisions: expected value over hope, process over outcomes, and managing risk under uncertainty."
 keywords:

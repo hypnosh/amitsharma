@@ -1,0 +1,1 @@
+window.addEventListener("load",()=>{const e=document.querySelector(".hamburger"),t=document.querySelector("nav.realnav");e.addEventListener("click",()=>{t.classList.toggle("active")})})

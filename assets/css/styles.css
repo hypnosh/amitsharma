@@ -466,9 +466,10 @@ footer {
     .realnav {
         flex-wrap: wrap;
         flex-direction: column;
-    }
-    .hidden {
         display: none;
+    }
+    .active {
+        display: flex;
     }
 
     .nav1 {
