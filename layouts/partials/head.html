@@ -68,6 +68,8 @@
     referrerpolicy="no-referrer">
     
 {{ $style := resources.Get "css/styles.css" | resources.Minify | fingerprint }}
+{{ $scripts := resources.Get "scripts/script.js" | resources.Minify | fingerprint }}
+<script src="{{ $scripts.RelPermalink }}"></script>
 
 {{ if eq .RelPermalink "/about/" }}
     <script type="application/ld+json">
