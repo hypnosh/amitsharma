@@ -213,3 +213,30 @@ blockquote { margin: 2rem 0; padding-left: 1.5rem; border-left: 2px solid var(--
 .portrait { display: block; width: min(100%, 24rem); aspect-ratio: 4/5; object-fit: cover; border: 1px solid var(--line); }
 .prose { max-width: 56rem; color: var(--soft); font-size: 1.2rem; }
 .friction { margin-top: 1.5rem; padding: 0; list-style: none; color: var(--muted); font: .8rem/1.9 var(--sans); }
+
+/* --- visitor feedback --- */
+.feedback-tab { position: fixed; right: 18pt; bottom: 18pt; z-index: 60; padding: 11pt 16pt; border: 1px solid var(--line); background: color-mix(in srgb, var(--midnight) 92%, transparent); color: var(--ink); cursor: pointer; font: 700 8pt/1 var(--sans); text-transform: uppercase; letter-spacing: .16em; box-shadow: 0 10pt 26pt #0006; transition: border-color 160ms ease, background 160ms ease, color 160ms ease; }
+.feedback-tab:hover, .feedback-tab:focus-visible { border-color: var(--terracotta); background: var(--terracotta); color: #fff; outline: none; }
+.feedback-dialog { width: min(100% - 24pt, 400pt); padding: 30pt; border: 1px solid var(--line); background: var(--midnight); color: var(--ink); box-shadow: 0 24pt 60pt #000a; }
+.feedback-dialog::backdrop { background: #000a; }
+.feedback-close { position: absolute; top: 14pt; right: 14pt; display: grid; width: 26pt; height: 26pt; place-items: center; padding: 0; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; font: 400 13pt/1 var(--sans); transition: border-color 160ms ease, color 160ms ease; }
+.feedback-close:hover, .feedback-close:focus-visible { border-color: var(--terracotta); color: var(--ink); outline: none; }
+.feedback-kicker { margin: 0; color: var(--terracotta); font: 700 7.5pt/1 var(--sans); text-transform: uppercase; letter-spacing: .2em; }
+.feedback-dialog h2 { max-width: 300pt; margin: 12pt 0 0; font-size: 20pt; line-height: 1.15; }
+.feedback-options { margin-top: 18pt; border-top: 1px solid var(--line); }
+.feedback-option { display: grid; grid-template-columns: 13pt 1fr; gap: 10pt; align-items: start; padding: 10pt 0; border-bottom: 1px solid var(--line); cursor: pointer; font-size: 12.5pt; line-height: 1.45; }
+.feedback-option input { appearance: none; flex: 0 0 auto; width: 12pt; height: 12pt; margin: 3pt 0 0; border: 1px solid var(--muted); border-radius: 50%; background: transparent; cursor: pointer; }
+.feedback-option input:checked { border-color: var(--terracotta); background: var(--terracotta); box-shadow: inset 0 0 0 2.5pt var(--midnight); }
+.feedback-option input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.feedback-other { display: none; width: 100%; margin-top: 14pt; padding: 10pt 12pt; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 400 12pt/1.5 var(--serif); resize: vertical; }
+.feedback-other:focus-visible { border-color: var(--terracotta); outline: none; }
+.feedback-dialog.has-other .feedback-other { display: block; }
+.feedback-submit { width: 100%; margin-top: 18pt; }
+.feedback-success { text-align: center; }
+.feedback-success p { margin: 6pt 0 0; font-size: 14pt; line-height: 1.5; }
+.feedback-success .button { margin-top: 18pt; }
+
+@media (max-width: 560px) {
+  .feedback-tab { right: 12pt; bottom: 12pt; }
+  .feedback-dialog { padding: 22pt; }
+}

@@ -232,6 +232,27 @@ consulting:
 footer:
   author: "Amit Sharma"
   role: "Fractional Product Operator"
+
+feedback:
+  tab_label: "Feedback"
+  title: "Visitor feedback"
+  question: "What, if anything, is holding you back from getting the Primer?"
+  options:
+    - "I'm not sure it's worth ₹1,999."
+    - "I'm not clear on what I'll actually get."
+    - "I'm not sure I need this right now."
+    - "I think I can do this myself with AI or free resources."
+    - "I need more evidence that it will be useful."
+    - "Something else"
+  close_label: "Close"
+  other_option: "Something else"
+  other_label: "Tell us a little more"
+  other_placeholder: "Tell us a little more (optional)"
+  submit_label: "Send"
+  success: "Thanks — your feedback has been noted."
+  form_action: "https://docs.google.com/forms/d/e/1FAIpQLSdfn9zXTdB7bcBXlLZZj3jDcEgOlEKXCXXIEd1ywjFDUYriHA/formResponse"
+  entry_option: "entry.792770820"
+  entry_other: ""
 ---
 
 Product Market Fit becomes easier to reason about when broad conviction is translated

@@ -299,6 +299,27 @@
     {{ with .Params.footer }}<p><a href="/"><strong>{{ .author }}</strong>{{ with .role }} · {{ . }}{{ end }}</a></p>{{ end }}
     <p>&copy; {{ now.Year }}</p>
   </footer>
+{{ with .Params.feedback }}
+  <button type="button" class="feedback-tab" data-feedback-open aria-haspopup="dialog">{{ .tab_label | default "Feedback" }}</button>
+  <dialog class="feedback-dialog" data-feedback data-form-action="{{ .form_action }}" data-entry-option="{{ .entry_option }}" data-entry-other="{{ .entry_other }}" data-other-option="{{ .other_option }}" aria-labelledby="feedback-title">
+    <button type="button" class="feedback-close" data-feedback-close aria-label="{{ .close_label | default "Close" }}">&times;</button>
+    {{ with .title }}<p class="feedback-kicker">{{ . }}</p>{{ end }}
+    <h2 id="feedback-title">{{ .question }}</h2>
+    <form data-feedback-form>
+      <div class="feedback-options">
+        {{ range .options }}
+        <label class="feedback-option"><input type="radio" name="feedback-choice" value="{{ . }}"><span>{{ . }}</span></label>
+        {{ end }}
+      </div>
+      <textarea class="feedback-other" data-feedback-other rows="3" placeholder="{{ .other_placeholder }}" aria-label="{{ .other_label | default .other_placeholder }}"></textarea>
+      <button type="submit" class="button feedback-submit">{{ .submit_label | default "Send" }}</button>
+    </form>
+    <div class="feedback-success" data-feedback-success hidden>
+      <p>{{ .success | default "Thanks — your feedback has been noted." }}</p>
+      <button type="button" class="button dark" data-feedback-close>{{ .close_label | default "Close" }}</button>
+    </div>
+  </dialog>
+{{ end }}
   <script>
     (() => {
       document.querySelectorAll('[data-framework]').forEach((framework) => {
@@ -394,6 +415,48 @@
         }, { root: viewport, threshold: [0.55, 0.7, 0.9] });
         slides.forEach((slide) => observer.observe(slide));
         syncActive(0);
+      });
+      document.querySelectorAll('[data-feedback]').forEach((dialog) => {
+        const openButton = document.querySelector('[data-feedback-open]');
+        const form = dialog.querySelector('[data-feedback-form]');
+        const success = dialog.querySelector('[data-feedback-success]');
+        const otherField = dialog.querySelector('[data-feedback-other]');
+        const otherOption = dialog.dataset.otherOption;
+        let sent = false;
+
+        const close = () => {
+          dialog.close();
+          if (sent && openButton) openButton.hidden = true;
+        };
+
+        openButton?.addEventListener('click', () => dialog.showModal());
+        dialog.querySelectorAll('[data-feedback-close]').forEach((button) => button.addEventListener('click', close));
+        dialog.addEventListener('click', (event) => { if (event.target === dialog) close(); });
+
+        form?.addEventListener('change', () => {
+          const choice = form.querySelector('input[name="feedback-choice"]:checked');
+          dialog.classList.toggle('has-other', Boolean(choice) && choice.value === otherOption);
+        });
+
+        form?.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const choice = form.querySelector('input[name="feedback-choice"]:checked');
+          if (!choice) return;
+          const action = dialog.dataset.formAction;
+          const entryOption = dialog.dataset.entryOption;
+          const entryOther = dialog.dataset.entryOther;
+          const isOther = choice.value === otherOption;
+          const otherText = otherField ? otherField.value.trim() : '';
+          if (action && entryOption) {
+            const params = new URLSearchParams();
+            params.set(entryOption, isOther ? '__other_option__' : choice.value);
+            if (isOther && otherText) params.set(entryOther || entryOption + '.other_option_response', otherText);
+            fetch(action, { method: 'POST', mode: 'no-cors', body: params });
+          }
+          sent = true;
+          form.hidden = true;
+          if (success) success.hidden = false;
+        });
       });
     })();
   </script>

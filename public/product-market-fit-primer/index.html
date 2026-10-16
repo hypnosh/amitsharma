@@ -391,6 +391,37 @@ willing to question what you think you know.</p>
     <p><a href="/"><strong>Amit Sharma</strong> · Fractional Product Operator</a></p>
     <p>&copy; 2026</p>
   </footer>
+
+  <button type="button" class="feedback-tab" data-feedback-open aria-haspopup="dialog">Feedback</button>
+  <dialog class="feedback-dialog" data-feedback data-form-action="https://docs.google.com/forms/d/e/1FAIpQLSdfn9zXTdB7bcBXlLZZj3jDcEgOlEKXCXXIEd1ywjFDUYriHA/formResponse" data-entry-option="entry.792770820" data-entry-other="" data-other-option="Something else" aria-labelledby="feedback-title">
+    <button type="button" class="feedback-close" data-feedback-close aria-label="Close">&times;</button>
+    <p class="feedback-kicker">Visitor feedback</p>
+    <h2 id="feedback-title">What, if anything, is holding you back from getting the Primer?</h2>
+    <form data-feedback-form>
+      <div class="feedback-options">
+        
+        <label class="feedback-option"><input type="radio" name="feedback-choice" value="I&#39;m not sure it&#39;s worth ₹1,999."><span>I&#39;m not sure it&#39;s worth ₹1,999.</span></label>
+        
+        <label class="feedback-option"><input type="radio" name="feedback-choice" value="I&#39;m not clear on what I&#39;ll actually get."><span>I&#39;m not clear on what I&#39;ll actually get.</span></label>
+        
+        <label class="feedback-option"><input type="radio" name="feedback-choice" value="I&#39;m not sure I need this right now."><span>I&#39;m not sure I need this right now.</span></label>
+        
+        <label class="feedback-option"><input type="radio" name="feedback-choice" value="I think I can do this myself with AI or free resources."><span>I think I can do this myself with AI or free resources.</span></label>
+        
+        <label class="feedback-option"><input type="radio" name="feedback-choice" value="I need more evidence that it will be useful."><span>I need more evidence that it will be useful.</span></label>
+        
+        <label class="feedback-option"><input type="radio" name="feedback-choice" value="Something else"><span>Something else</span></label>
+        
+      </div>
+      <textarea class="feedback-other" data-feedback-other rows="3" placeholder="Tell us a little more (optional)" aria-label="Tell us a little more"></textarea>
+      <button type="submit" class="button feedback-submit">Send</button>
+    </form>
+    <div class="feedback-success" data-feedback-success hidden>
+      <p>Thanks — your feedback has been noted.</p>
+      <button type="button" class="button dark" data-feedback-close>Close</button>
+    </div>
+  </dialog>
+
   <script>
     (() => {
       document.querySelectorAll('[data-framework]').forEach((framework) => {
@@ -486,6 +517,48 @@ willing to question what you think you know.</p>
         }, { root: viewport, threshold: [0.55, 0.7, 0.9] });
         slides.forEach((slide) => observer.observe(slide));
         syncActive(0);
+      });
+      document.querySelectorAll('[data-feedback]').forEach((dialog) => {
+        const openButton = document.querySelector('[data-feedback-open]');
+        const form = dialog.querySelector('[data-feedback-form]');
+        const success = dialog.querySelector('[data-feedback-success]');
+        const otherField = dialog.querySelector('[data-feedback-other]');
+        const otherOption = dialog.dataset.otherOption;
+        let sent = false;
+
+        const close = () => {
+          dialog.close();
+          if (sent && openButton) openButton.hidden = true;
+        };
+
+        openButton?.addEventListener('click', () => dialog.showModal());
+        dialog.querySelectorAll('[data-feedback-close]').forEach((button) => button.addEventListener('click', close));
+        dialog.addEventListener('click', (event) => { if (event.target === dialog) close(); });
+
+        form?.addEventListener('change', () => {
+          const choice = form.querySelector('input[name="feedback-choice"]:checked');
+          dialog.classList.toggle('has-other', Boolean(choice) && choice.value === otherOption);
+        });
+
+        form?.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const choice = form.querySelector('input[name="feedback-choice"]:checked');
+          if (!choice) return;
+          const action = dialog.dataset.formAction;
+          const entryOption = dialog.dataset.entryOption;
+          const entryOther = dialog.dataset.entryOther;
+          const isOther = choice.value === otherOption;
+          const otherText = otherField ? otherField.value.trim() : '';
+          if (action && entryOption) {
+            const params = new URLSearchParams();
+            params.set(entryOption, isOther ? '__other_option__' : choice.value);
+            if (isOther && otherText) params.set(entryOther || entryOption + '.other_option_response', otherText);
+            fetch(action, { method: 'POST', mode: 'no-cors', body: params });
+          }
+          sent = true;
+          form.hidden = true;
+          if (success) success.hidden = false;
+        });
       });
     })();
   </script>
