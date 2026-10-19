@@ -17,6 +17,9 @@
       <link rel="favicon" href="{{ . | absURL }}">
     {{ end }}
   {{ end }}
+  {{ with .Params.purchase_url }}
+    <meta property="og:url" content="{{ . }}">
+  {{ end }}
   <meta name="twitter:card" content="{{ .Params.seo.twitter_card | default "summary_large_image" }}">
   <link rel="canonical" href="{{ .Permalink }}">
   {{ with resources.Get "css/product.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
