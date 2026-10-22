@@ -1,1 +1,0 @@
-window.addEventListener("load",()=>{const t=document.querySelector(".hamburger"),e=document.querySelector("nav.realnav");e.classList.toggle("hidden"),t.addEventListener("click",()=>{e.classList.toggle("hidden")})})

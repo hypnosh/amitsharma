@@ -240,3 +240,34 @@ blockquote { margin: 2rem 0; padding-left: 1.5rem; border-left: 2px solid var(--
   .feedback-tab { right: 12pt; bottom: 12pt; }
   .feedback-dialog { padding: 22pt; }
 }
+
+/* --- ai companion --- */
+.ai-highlight { max-width: 430pt; margin-top: 26pt; padding: 15pt 18pt; border: 1px solid var(--line); border-left: 2px solid var(--terracotta); background: color-mix(in srgb, var(--surface) 70%, transparent); }
+.ai-highlight strong { color: var(--terracotta); font: 700 8pt/1 var(--sans); text-transform: uppercase; letter-spacing: .18em; }
+.ai-highlight p { margin: 8pt 0 0; color: var(--soft); font-size: 11.5pt; line-height: 1.55; }
+.ai-highlight small { display: block; margin-top: 7pt; color: var(--muted); font: 600 7.5pt/1 var(--sans); text-transform: uppercase; letter-spacing: .14em; }
+.ai-chip { display: flex; flex-wrap: wrap; align-items: center; gap: 4pt 10pt; width: fit-content; max-width: 100%; margin-top: 14pt; padding: 8pt 13pt; border: 1px solid var(--terracotta); background: color-mix(in srgb, var(--terracotta) 10%, transparent); font: 700 7.5pt/1.4 var(--sans); text-transform: uppercase; letter-spacing: .14em; }
+.ai-chip strong { color: var(--terracotta); }
+.ai-chip span { color: var(--muted); font-weight: 600; }
+.companion-header { max-width: 720pt; }
+.companion-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(36pt, 72pt, 96pt); margin-top: 44pt; }
+.companion-lead-text { margin-bottom: 0; color: var(--ink); font-size: 1.3rem; line-height: 1.5; }
+.companion-text { margin-top: 1rem; color: var(--soft); font-size: 1.15rem; line-height: 1.6; }
+.companion-uses-label { margin: 0; color: var(--muted); font: 700 8pt/1 var(--sans); text-transform: uppercase; letter-spacing: .18em; }
+.companion-grid .ruled { margin-bottom: 0; }
+.companion-grid .ruled li { font-size: 1.05rem; line-height: 1.55; }
+.companion-callout { margin-top: 2rem; padding: 18pt 20pt; border: 1px solid var(--line); background: var(--surface); }
+.companion-callout strong { display: block; color: var(--terracotta); font: 700 8pt/1 var(--sans); text-transform: uppercase; letter-spacing: .18em; }
+.companion-callout p { margin: 10pt 0 0; color: var(--soft); font-size: 11.5pt; line-height: 1.6; }
+.companion-caveat { border-left: 2px solid var(--terracotta); }
+.companion-note { margin: 40pt 0 0; color: var(--muted); font: 600 8pt/1.6 var(--sans); text-transform: uppercase; letter-spacing: .14em; }
+
+@media (max-width: 560px) {
+  .ai-highlight { margin-top: 20pt; padding: 13pt 15pt; }
+  .companion-callout { padding: 15pt 16pt; }
+}
+
+@media (max-width: 900px) {
+  .companion-grid { grid-template-columns: 1fr; gap: 36pt; }
+  .companion-note { margin-top: 32pt; }
+}

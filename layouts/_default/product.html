@@ -121,6 +121,13 @@
             {{ with .delivery_note }}<small>{{ . }}</small>{{ end }}
           </div>
         </div>
+        {{ with $.Params.ai_highlight }}
+        <aside class="ai-highlight">
+          <strong>{{ .label }}</strong>
+          <p>{{ .text }}</p>
+          <small>{{ .note }}</small>
+        </aside>
+        {{ end }}
       </div>
       {{ with $.Params.cover }}
       <figure class="book-figure">
@@ -179,6 +186,40 @@
       <div class="card-grid">{{ range .items }}<article><h3>{{ .title }}</h3><p>{{ .description }}</p></article>{{ end }}</div>
     </section>
     {{ end }}
+
+    {{ with .Params.companion }}
+    <section class="band shell" id="companion">
+      <header class="companion-header">
+        {{ with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+        <h2>{{ .title }}</h2>
+        {{ with .lead }}<p class="lede">{{ . }}</p>{{ end }}
+      </header>
+      <div class="companion-grid">
+        <div>
+          {{ with .situation }}<p class="companion-lead-text">{{ . }}</p>{{ end }}
+          {{ with .description }}<p class="companion-text">{{ . }}</p>{{ end }}
+          {{ with .how }}
+          <div class="companion-callout">
+            {{ with $.Params.companion.how_label }}<strong>{{ . }}</strong>{{ end }}
+            <p>{{ . }}</p>
+          </div>
+          {{ end }}
+        </div>
+        <div>
+          {{ with .uses_label }}<p class="companion-uses-label">{{ . }}</p>{{ end }}
+          <ul class="ruled">{{ range .uses }}<li>{{ . }}</li>{{ end }}</ul>
+          {{ with .caveat }}
+          <div class="companion-callout companion-caveat">
+            {{ with $.Params.companion.caveat_label }}<strong>{{ . }}</strong>{{ end }}
+            <p>{{ . }}</p>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      {{ with .note }}<p class="companion-note">{{ . }}</p>{{ end }}
+    </section>
+    {{ end }}
+
 
     {{ with .Params.screenshots }}
     <section class="band surface" id="preview"><div class="shell">

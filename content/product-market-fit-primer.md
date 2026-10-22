@@ -34,6 +34,8 @@ navigation:
       href: "#framework"
     - label: "Inside"
       href: "#inside"
+    - label: "AI Companion"
+      href: "#companion"
     - label: "Who it's for"
       href: "#fit"
     - label: "About Amit"
@@ -50,6 +52,11 @@ hero:
   subhead: "A practical workbook for founders figuring out whether they're building something a specific market actually needs and will pay for."
   cta_label: "Get the Primer"
   delivery_note: "Instant digital delivery · PDF"
+
+ai_highlight:
+  label: "Now with AI Companion"
+  text: "Work through the Primer with an AI guide that challenges your assumptions, identifies evidence gaps, and helps you decide what to validate next."
+  note: "Included with your purchase."
 
 cover:
   image: "images/pmf/pmf.png"
@@ -126,6 +133,24 @@ what_you_get:
       description: "Ways to separate belief from evidence and decide what to test next."
     - title: "A Product Market Fit hypothesis"
       description: "Bring your thinking together into something you can actually test."
+
+companion:
+  eyebrow: "The AI Companion"
+  title: "Meet the PMF Primer AI Companion"
+  lead: "Turn the PMF Primer into a working session for your business."
+  situation: "You have an idea, a product, or even paying customers. But do you know what has to be true for your business to succeed?"
+  description: "The AI Companion helps you work through the four dimensions of product-market fit: Technology, Audience Need, Willingness to Pay, and Founder Advantage."
+  uses_label: "Use it to:"
+  uses:
+    - "Challenge assumptions instead of treating founder conviction as customer evidence."
+    - "Separate what you know from what you believe and what you still need to validate."
+    - "Identify the riskiest assumptions in your business."
+    - "Design practical experiments to gather evidence and decide what to do next."
+  how_label: "How to use it"
+  how: "Copy the companion prompt into ChatGPT, Gemini, Claude or another compatible AI assistant and work through it conversationally (prompt the assistant to 'help you walk through the attached companion'). Bring your actual customer observations, numbers and uncertainties. The more specific you are, the more useful the exercise becomes."
+  caveat_label: "Important"
+  caveat: "The companion helps you reason through your business and plan validation. It cannot substitute for real customer evidence or guarantee product-market fit."
+  note: "This companion is included with your PMF Primer purchase."
 
 screenshots:
   eyebrow: "Show the product"
@@ -208,7 +233,7 @@ offer:
   cta_label: "Get the Primer for ₹1,999+GST"
   microcopy: "Instant digital delivery."
   checklist:
-    - "The complete digital PDF"
+    - "The complete digital PDF + AI Companion"
     - "Frameworks and exercises"
     - "Practical worksheets"
     - "Customer discovery questions"
