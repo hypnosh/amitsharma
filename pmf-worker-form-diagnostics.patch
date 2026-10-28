@@ -1,0 +1,58 @@
+diff --git a/worker/src/index.js b/worker/src/index.js
+--- a/worker/src/index.js
++++ b/worker/src/index.js
+@@ -238,8 +238,11 @@
+ // ---------------------------------------------------------------------------
+ 
+ function entry(env, name) {
+-  const value = env[name];
+-  return value && value.trim() ? value.trim() : undefined;
++  const raw = env[name];
++  if (typeof raw !== "string") return undefined;
++  // Tolerate values pasted with surrounding quotes or whitespace.
++  const value = raw.trim().replace(/^["']+|["']+$/g, "").trim();
++  return value || undefined;
+ }
+ 
+ function leadCaptureConfigured(env) {
+@@ -269,8 +272,29 @@
+     if (id && value) params.set(id, value);
+   }
+ 
++  let target;
+   try {
+-    const response = await fetch(formUrl, {
++    target = new URL(formUrl);
++  } catch {
++    console.error(
++      `PMF_LEAD_FORM_URL is not a valid URL (starts with "${formUrl.slice(0, 12)}…", length ${formUrl.length}). ` +
++        "It must be the full https://docs.google.com/forms/d/e/.../formResponse address.",
++    );
++    return { ok: false, reason: "lead_capture_failed" };
++  }
++  if (target.protocol !== "https:" || !target.pathname.endsWith("/formResponse")) {
++    console.error(
++      `PMF_LEAD_FORM_URL looks wrong: host=${target.host} path=${target.pathname}. ` +
++        "It must be https and end in /formResponse (not /viewform).",
++    );
++  }
++  const badIds = [["PMF_LEAD_FORM_ENTRY_EMAIL", emailEntry], ...optional.map(([n]) => [n, entry(env, n)])]
++    .filter(([, id]) => id && !/^entry\.\d+$/.test(id))
++    .map(([n]) => n);
++  if (badIds.length) console.error(`Entry IDs not in the form "entry.123456": ${badIds.join(", ")}`);
++
++  try {
++    const response = await fetch(target.toString(), {
+       method: "POST",
+       headers: { "Content-Type": "application/x-www-form-urlencoded" },
+       body: params.toString(),
+@@ -278,7 +302,8 @@
+     });
+     if (response.status >= 200 && response.status < 400) return { ok: true, persisted: true };
+     return { ok: false, reason: "lead_capture_failed", status: response.status };
+-  } catch {
++  } catch (err) {
++    console.error(`Google Form request threw: ${err && err.message ? err.message : String(err)}`);
+     return { ok: false, reason: "lead_capture_failed" };
+   }
+ }
