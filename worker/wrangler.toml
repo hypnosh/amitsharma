@@ -1,0 +1,9 @@
+name = "pmf-evaluator"
+main = "src/index.js"
+compatibility_date = "2026-10-28"
+
+# Non-secret configuration. Secrets (GEMINI_API_KEY, PMF_LEAD_FORM_URL and the
+# ten PMF_LEAD_FORM_ENTRY_* ids) are set with: wrangler secret put <NAME>
+[vars]
+PMF_GEMINI_MODEL = "gemini-3.5-flash"
+PMF_ALLOWED_ORIGINS = "https://amitsharma.tech,https://www.amitsharma.tech"
