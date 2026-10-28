@@ -18,6 +18,24 @@
         {{ .Content }}
     </div>
 
+
+    <div class="page-nav">
+        {{ if eq .Section "posts" }}
+        {{ $pages := where site.RegularPages "Section" "posts" }}
+        {{ $pages = sort $pages "Date" "desc" }}
+        {{ with $pages.Prev . }}
+            <a href="{{ .RelPermalink }}" rel="prev" class="prev-article">
+            ← Previous
+            </a>
+        {{ end }}
+        {{ with $pages.Next . }}
+            <a href="{{ .RelPermalink }}" rel="next" class="next-article">
+            Next →
+            </a>
+        {{ end }}
+        {{ end }}
+    </div>
+
     {{ if .Params.showTestimonials }}
         {{ partial "testimonials.html" . }}
     {{ end }}
