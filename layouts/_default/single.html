@@ -24,12 +24,12 @@
         {{ $pages := where site.RegularPages "Section" "posts" }}
         {{ $pages = sort $pages "Date" "desc" }}
         {{ with $pages.Prev . }}
-            <a href="{{ .RelPermalink }}" rel="prev" class="prev-article">
+            <a href="{{ .RelPermalink }}" rel="prev" class="prev-article" title="{{ .Title }}">
             ← Previous
             </a>
         {{ end }}
         {{ with $pages.Next . }}
-            <a href="{{ .RelPermalink }}" rel="next" class="next-article">
+            <a href="{{ .RelPermalink }}" rel="next" class="next-article" title="{{ .Title }}">
             Next →
             </a>
         {{ end }}
