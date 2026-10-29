@@ -19,6 +19,15 @@
  *   PMF_LEAD_FORM_ENTRY_CONSENT    (secret) entry id — marketing consent
  *   PMF_LEAD_FORM_ENTRY_TIMESTAMP  (secret) entry id — submission timestamp
  *   PMF_LEAD_FORM_ENTRY_SOURCE     (secret) entry id — source marker
+ *   PMF_MAP_FORM_URL               (secret, optional) second Google Form that
+ *                                  receives the GENERATED MAP. Logging is
+ *                                  non-blocking: a failure here never stops a
+ *                                  visitor from seeing their map.
+ *   PMF_MAP_ENTRY_EMAIL            (secret) entry id — email (required to log)
+ *   PMF_MAP_ENTRY_GENERATED_BY     (secret) entry id — "gemini" or "fallback"
+ *   PMF_MAP_ENTRY_TIMESTAMP        (secret) entry id — ISO generation time
+ *   PMF_MAP_ENTRY_RAW              (secret) entry id — the full record as JSON
+
  *   PMF_GEMINI_MODEL               (var, optional) default gemini-3.5-flash
  *   PMF_ALLOWED_ORIGINS            (var, optional) extra comma-separated origins
  */
@@ -307,6 +316,107 @@ async function persistLead(env, input) {
     return { ok: false, reason: "lead_capture_failed" };
   }
 }
+
+// ---------------------------------------------------------------------------
+// Output logging (optional): saves the GENERATED MAP to a second Google Form.
+//
+// The form has exactly four questions — email, by, at, json — so everything
+// else travels inside the json column as one JSON document: the map the
+// visitor saw, the answers behind it, and how it was produced. One column
+// holds the whole record, and the sheet stays readable.
+//
+// Deliberately non-blocking and error-swallowing: it runs after the response is
+// built, so a logging failure can never stop a visitor from seeing a map that
+// was generated successfully. If PMF_MAP_FORM_URL is unset, this is a no-op.
+// ---------------------------------------------------------------------------
+
+const MAP_LOG_FIELDS = [
+  ["PMF_MAP_ENTRY_EMAIL", "email"],
+  ["PMF_MAP_ENTRY_GENERATED_BY", "generated_by"],
+  ["PMF_MAP_ENTRY_TIMESTAMP", "timestamp"],
+  ["PMF_MAP_ENTRY_RAW", "json"],
+];
+
+async function logMap(env, payload) {
+  const formUrl = entry(env, "PMF_MAP_FORM_URL");
+  const emailEntry = entry(env, "PMF_MAP_ENTRY_EMAIL");
+  if (!formUrl || !emailEntry) return;
+
+  const record = {
+    email: payload.email,
+    generated_by: payload.generated_by,
+    model: payload.model,
+    latency_ms: payload.latency_ms,
+    generated_at: payload.timestamp,
+    source: payload.source,
+    consent: payload.consent ? "yes" : "no",
+    answers: payload.answers,
+    map: payload.map,
+  };
+
+  const values = {
+    email: payload.email,
+    generated_by: payload.generated_by,
+    timestamp: payload.timestamp,
+    json: JSON.stringify(record),
+  };
+
+  const params = new URLSearchParams();
+  for (const [envName, key] of MAP_LOG_FIELDS) {
+    const id = entry(env, envName);
+    const text = String(values[key] ?? "");
+    if (id && text) params.set(id, text);
+  }
+
+  let target;
+  try {
+    target = new URL(formUrl);
+  } catch {
+    console.error(
+      `PMF_MAP_FORM_URL is not a valid URL (starts with "${formUrl.slice(0, 12)}…", length ${formUrl.length}). ` +
+        "Map logging skipped.",
+    );
+    return;
+  }
+  if (target.protocol !== "https:" || !target.pathname.endsWith("/formResponse")) {
+    console.error(
+      `PMF_MAP_FORM_URL looks wrong: host=${target.host} path=${target.pathname}. ` +
+        "It must be https and end in /formResponse (not /viewform). Map logging skipped.",
+    );
+    return;
+  }
+  const badIds = MAP_LOG_FIELDS.map(([n]) => [n, entry(env, n)])
+    .filter(([, id]) => id && !/^entry\.\d+$/.test(id))
+    .map(([n]) => n);
+  if (badIds.length) console.error(`Map-log entry IDs not in the form "entry.123456": ${badIds.join(", ")}`);
+
+  try {
+    const response = await fetch(target.toString(), {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: params.toString(),
+      redirect: "follow",
+    });
+    if (response.status >= 200 && response.status < 400) {
+      console.info(
+        `pmf-evaluator map logged generated_by=${payload.generated_by} json_chars=${values.json.length}`,
+      );
+      return;
+    }
+    const html = await response.text().catch(() => "");
+    const title = (html.match(/<title>([^<]*)<\/title>/i) || [])[1] || "unknown";
+    const required = /This is a required question/i.test(html);
+    console.error(
+      `Map-log form rejected the save [${response.status}]. Form title: "${title.trim()}". ` +
+        (required
+          ? "Reason: a required question in that form got no answer — check PMF_MAP_ENTRY_EMAIL matches it."
+          : "Reason not stated by Google."),
+    );
+  } catch (err) {
+    console.error(`Map-log request threw: ${err && err.message ? err.message : String(err)}`);
+  }
+}
+
 
 // ---------------------------------------------------------------------------
 // Gemini generation
@@ -628,7 +738,7 @@ function remainingUnknowns(answers, expertiseUnclear) {
 // Request handler (port of evaluator.server.ts handleEvaluate)
 // ---------------------------------------------------------------------------
 
-async function handleEvaluate(request, env) {
+async function handleEvaluate(request, env, ctx) {
   const cors = corsHeaders(request, env);
   if (!originAllowed(request, env)) {
     return json({ error: "origin_not_allowed" }, 403, cors);
@@ -711,20 +821,44 @@ async function handleEvaluate(request, env) {
     model = generation.model;
   }
 
-  return json(
-    { map, meta: { source, model, lead_persisted: true, generated_at: new Date().toISOString() } },
-    200,
-    cors,
-  );
+  const body = { map, meta: { source, model, lead_persisted: true, generated_at: new Date().toISOString() } };
+
+  // Output logging is best-effort and happens after the response is built: a
+  // map that generated successfully must reach the visitor even if the log
+  // form is misconfigured, rate-limited or unreachable.
+  const logged = logMap(env, {
+    email: input.email,
+    consent: input.consent,
+    answers: {
+      stage: STAGE_LABELS[input.answers.stage],
+      evidence: evidenceLabel(input.answers),
+      uncertainty: uncertaintyLabel(input.answers),
+      product: input.answers.product,
+      audience: input.answers.audience,
+      expertise: input.answers.expertise,
+    },
+    source: input.meta?.source ?? "",
+    map,
+    generated_by: source,
+    model,
+    latency_ms: generation.latencyMs,
+    timestamp: body.meta.generated_at,
+
+  }).catch((err) => {
+    console.error(`pmf-evaluator map logging threw: ${err && err.message ? err.message : String(err)}`);
+  });
+  if (ctx && typeof ctx.waitUntil === "function") ctx.waitUntil(logged);
+
+  return json(body, 200, cors);
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: corsHeaders(request, env) });
     }
     if (request.method === "POST") {
-      return handleEvaluate(request, env);
+      return handleEvaluate(request, env, ctx);
     }
     return json({ error: "method_not_allowed" }, 405, corsHeaders(request, env));
   },
