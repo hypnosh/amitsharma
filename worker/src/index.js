@@ -28,6 +28,7 @@
  *   PMF_MAP_ENTRY_TIMESTAMP        (secret) entry id — ISO generation time
  *   PMF_MAP_ENTRY_RAW              (secret) entry id — the full record as JSON
 
+
  *   PMF_GEMINI_MODEL               (var, optional) default gemini-3.5-flash
  *   PMF_ALLOWED_ORIGINS            (var, optional) extra comma-separated origins
  */
@@ -315,6 +316,22 @@ async function persistLead(env, input) {
       redirect: "follow",
     });
     if (response.status >= 200 && response.status < 400) return { ok: true, persisted: true };
+    // Explain the rejection: Google's error page names the form and the reason.
+    const html = await response.text().catch(() => "");
+    const title = (html.match(/<title>([^<]*)<\/title>/i) || [])[1] || "unknown";
+    const required = /This is a required question/i.test(html);
+    const sent = [["PMF_LEAD_FORM_ENTRY_EMAIL", emailEntry], ...optional.map(([n]) => [n, entry(env, n)])]
+      .filter(([, id]) => id)
+      .map(([n, id]) => `${n.replace("PMF_LEAD_FORM_ENTRY_", "")}=${id}`)
+      .join(" ");
+    console.error(
+      `Google Form rejected the save [${response.status}]. Form title: "${title.trim()}". ` +
+        (required
+          ? "Reason: a required question in that form got no answer — either PMF_LEAD_FORM_URL points to the wrong form, " +
+            "or an entry ID (most likely EMAIL) does not match that form's required question."
+          : "Reason not stated by Google.") +
+        ` Entry IDs sent: ${sent}`,
+    );
     return { ok: false, reason: "lead_capture_failed", status: response.status };
   } catch (err) {
     console.error(`Google Form request threw: ${err && err.message ? err.message : String(err)}`);
