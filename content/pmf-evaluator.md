@@ -17,7 +17,7 @@ seo:
 # privacy_url: set to the site's privacy notice URL (the email-step link
 # hides itself while empty). primer_url must be a verified destination.
 evaluator:
-  api_base: "https://project--059acffb-f718-4bdd-a002-a940184d0cc0.lovable.app"
+  api_base: "https://pmf-evaluator.amitksharma.workers.dev/api/public/pmf/evaluate"
   primer_url: "https://amitsharma.tech/product-market-fit-primer/"
   privacy_url: "https://amitsharma.tech/privacy/"
   source: "amitsharma.tech/pmf-evaluator"
