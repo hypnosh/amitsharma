@@ -39,6 +39,10 @@ const GEMINI_TIMEOUT_MS = 45_000;
 const GEMINI_ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/models";
 const DEFAULT_MODEL = "gemini-3.5-flash";
 
+/** Bumped whenever the prompt changes, so logged maps stay comparable.
+ *  v1 = initial summarising prompt; v2 = context-specific reasoning prompt. */
+const PROMPT_VERSION = "v2-context-reasoning";
+
 /** Per-isolate fixed-window limiter (same caveat as the Lovable version:
  *  add Cloudflare WAF rate-limit rules for cross-isolate protection). */
 const hits = new Map();
@@ -189,6 +193,7 @@ function validMap(m) {
     isString(m.next_experiment.action, 1, 10000) &&
     isString(m.next_experiment.target, 1, 10000) &&
     isString(m.next_experiment.question_or_observation, 1, 10000) &&
+    (m.next_experiment.interpretation === undefined || isString(m.next_experiment.interpretation, 1, 10000)) &&
     isString(m.next_experiment.meaningful_evidence, 1, 10000) &&
     Array.isArray(m.remaining_unknowns) &&
     m.remaining_unknowns.length >= 1 &&
@@ -345,6 +350,7 @@ async function logMap(env, payload) {
   const record = {
     email: payload.email,
     generated_by: payload.generated_by,
+    prompt_version: PROMPT_VERSION,
     model: payload.model,
     latency_ms: payload.latency_ms,
     generated_at: payload.timestamp,
@@ -456,10 +462,11 @@ function responseSchema() {
           action: { type: "STRING" },
           target: { type: "STRING" },
           question_or_observation: { type: "STRING" },
+          interpretation: { type: "STRING" },
           meaningful_evidence: { type: "STRING" },
         },
-        required: ["action", "target", "question_or_observation", "meaningful_evidence"],
-        propertyOrdering: ["action", "target", "question_or_observation", "meaningful_evidence"],
+        required: ["action", "target", "question_or_observation", "interpretation", "meaningful_evidence"],
+        propertyOrdering: ["action", "target", "question_or_observation", "interpretation", "meaningful_evidence"],
       },
       remaining_unknowns: { type: "ARRAY", items: { type: "STRING" } },
       limitations: { type: "STRING" },
@@ -489,26 +496,70 @@ function systemPrompt() {
   return [
     "You produce a PMF Opportunity Map for founders using the Product Market Fit Primer's framework.",
     "",
+    "Your job is NOT to summarise the founder's answers. It is to extract the most useful, defensible",
+    "insight available from what they supplied and point them at their next consequential decision.",
+    "",
     "Hard rules:",
-    "1. Use only facts the founder supplied, plus cautious inferences you explicitly label as inferences.",
+    "1. Use only facts the founder supplied, plus cautious inferences you explicitly label as hypotheses or possibilities.",
     "2. Separate founder-provided descriptions, reported evidence, assumptions, inferences and unknowns.",
     "3. Never invent validation, customer feedback, traction, market size, pricing, revenue or willingness to pay.",
-    "4. Never claim the business has or lacks product-market fit.",
-    "5. Never give a numerical PMF score, percentage probability of success or a pass/fail verdict.",
-    "6. Keep the four framework elements exactly: Technology, Audience Need, Willingness to Pay, Founder Expertise.",
+    "   Never present a plausible domain assumption as an established fact.",
+    "4. Never claim the business has or lacks product-market fit; never give a numerical PMF score,",
+    "   a percentage probability of success or a pass/fail verdict. Never treat an intersection of the four elements as proof of product-market fit.",
+    "5. Keep the four framework elements exactly: Technology, Audience Need, Willingness to Pay, Founder Expertise.",
+    "   They are lenses for interpreting ONE opportunity, not four independent report fields.",
+    "6. Treat any multiple-choice answer the founder selected as self-reported information, never as independently verified evidence.",
     "7. Adapt interpretation and the suggested experiment to the founder's stage.",
-    "8. Identify ONE consequential uncertainty, not a list of every conceivable concern.",
-    "9. Suggest ONE practical experiment with a specific target, action, observation and evidence criterion.",
-    "10. Make clear that evidence criteria are ways to investigate a hypothesis, not universal success thresholds.",
-    "11. Explicitly acknowledge important missing information.",
-    "12. Avoid generic advice, motivational language, excessive caveats and lengthy output. Write compact, concrete, plain sentences suitable for a mobile screen.",
+    "   Do NOT automatically prioritise demand validation in every assessment — different stages need different investigations.",
+    "8. Do not reproduce the paid Primer's worksheets, opportunity scorecard, complete discovery process or AI companion workflow.",
     "",
-    "The four elements must use these exact status labels, chosen descriptively (they are not grades):",
-    "Described, Assumed, Evidence provided, Unverified, Needs exploration.",
-    "Treat any multiple-choice answer the founder selected as self-reported information, never as independently verified evidence.",
-    "Do not treat an intersection of the four elements as proof of product-market fit.",
+    "Interpret, don't restate:",
+    "- Analyse how the product capability, the intended audience, the problem it addresses, the stage and reported",
+    "  evidence, and the founder's expertise and access relate to each other. Identify at least one meaningful",
+    "  implication that follows from this specific combination. Never merely restate the product description and",
+    "  append \"demand is unvalidated\".",
+    "- Early-stage inputs are usually broad descriptions: an audience category rather than a defined buyer,",
+    "  a product category rather than a defined problem. Name the specific unresolved distinction when the inputs",
+    "  support one. Useful distinctions include: whether the audience contains different buyer types with different",
+    "  problems; whether a specific problem or only a broad need has been identified; whether the problem is currently",
+    "  addressed through another method; whether weak acquisition reflects the wrong audience, an unclear proposition",
+    "  or friction in the buying journey; whether paying customers derive sustained value or just make an initial",
+    "  purchase; whether the founder's expertise or access is a real advantage for understanding or serving this",
+    "  audience. These are reasoning patterns to choose from, not mandatory diagnoses — use only what the inputs support.",
+    "- If the inputs genuinely do not support an insight, say precisely what is too broad or missing and what",
+    "  distinction needs clarifying. Do not force one.",
+    "- The opportunity summary states the founder's proposal briefly, ONCE. Each element then interprets the relevant",
+    "  information instead of repeating the input. supporting_input quotes only the specific fact or evidence the",
+    "  interpretation relies on — never the full input. State important caveats once, not in every section.",
+    "",
+    "The next decision and experiment:",
+    "- Identify ONE consequential uncertainty: the particular question whose answer would most change what the founder",
+    "  does next, connected to a specific product or business decision. Never write generic statements such as",
+    "  \"demand has not been validated\", \"more customer research is needed\", \"you need to understand your users\"",
+    "  or \"willingness to pay remains unknown\" on their own.",
+    "- Design ONE small, practical, discriminating investigation suited to the stage. It should distinguish between",
+    "  competing explanations where they exist, and examine past behaviour, existing alternatives, actual consequences",
+    "  or other observable evidence — not opinions about whether an idea sounds good. Do not prescribe sample sizes",
+    "  or universal numerical thresholds as proof of product-market fit.",
+    "- In next_experiment.interpretation, say what different plausible findings would suggest: which finding supports,",
+    "  weakens or reshapes the hypothesis, and what each would mean for the next decision.",
+    "",
+    "Self-check before returning the result: if the product description were swapped for a different startup idea",
+    "and the substantive insight and recommended experiment would remain almost unchanged, the output is too generic.",
+    "Replace it with something specific to these inputs.",
+    "",
+    "Compactness (this is an orientation tool, not a consulting report):",
+    "- opportunity_summary: max 2 sentences.",
+    "- Each element summary: max 2 short sentences. what_remains_unknown: one concise sentence naming that element's",
+    "  most consequential unknown. supporting_input: one short quote or fact reference.",
+    "- interesting_hypothesis: exactly one, labelled as a hypothesis.",
+    "- key_uncertainty: one question plus a brief explanation of why resolving it matters.",
+    "- remaining_unknowns: max 3 short priority items.",
+    "- limitations: one or two sentences.",
+    "- Status labels, used descriptively (they are not grades): Described, Assumed, Evidence provided, Unverified, Needs exploration.",
+    "- Keep every field under roughly 60 words. Plain, concrete sentences suitable for a mobile screen. No motivational",
+    "  language, no repeated caveats, no elaboration for its own sake.",
     "If the founder's input is vague, say what is missing instead of filling gaps with plausible-sounding specifics.",
-    "Keep each summary and field under roughly 60 words. remaining_unknowns: 3 to 5 short items.",
   ].join("\n");
 }
 
@@ -524,7 +575,9 @@ function userPrompt(answers) {
     `REPORTED_EVIDENCE (self-selected option, self-reported, stage-adaptive): "${evidenceLabel(answers)}"`,
     `BIGGEST_UNCERTAINTY: ${uncertainty ? uncertainty : "not provided"}`,
     "",
-    "Generate the PMF Opportunity Map as structured JSON per the schema. Ground every statement in the inputs above; label anything beyond them as an inference.",
+    "Generate the PMF Opportunity Map as structured JSON per the schema.",
+    "Work only from the inputs above; label anything beyond them as a hypothesis or possibility.",
+    "Follow the interpretation, prioritisation and compactness rules in your instructions.",
   ].join("\n");
 }
 
@@ -681,6 +734,8 @@ function nextExperiment(answers) {
         target: "Three people in the audience you described who recently faced the situation your product addresses — not friends being polite.",
         question_or_observation:
           "Ask each person to walk you through the last time the problem came up: what they did about it, what it cost them, and what they tried first.",
+        interpretation:
+          "Specific recent instances you did not prompt suggest a defined problem worth pursuing; vague interest or no recollection suggests the problem is still an assumption and needs narrowing first.",
         meaningful_evidence:
           "At least two of the three describe specific recent instances of the problem, what they did in response, and what it cost them in time, money or effort — without you prompting them.",
       };
@@ -690,6 +745,8 @@ function nextExperiment(answers) {
         target: "Three potential customers from the audience you described who currently experience the problem.",
         question_or_observation:
           "After they react to the prototype, ask whether they would commit something meaningful now — time, data, a pilot slot, or money — and observe what they actually do, not what they say.",
+        interpretation:
+          "A concrete commitment suggests the solution matters enough to act on; polite interest without commitment suggests either the wrong audience or a proposition that does not yet beat their current alternative.",
         meaningful_evidence:
           "At least one person commits a meaningful resource (time, data, access or money) within a week, rather than only expressing interest.",
       };
@@ -699,6 +756,8 @@ function nextExperiment(answers) {
         target: "Your last 30 days of acquisition data, plus five people who showed interest but did not pay or return.",
         question_or_observation:
           "For non-converters: what they expected, what they compared you against, and what stopped them. In the data: where interest turns into drop-off.",
+        interpretation:
+          "Non-converters naming the same wrong-fit expectation points at audience or proposition; varied hesitations concentrated at one step point at buying friction rather than the offer itself.",
         meaningful_evidence:
           "You can name the single step where most interested people stop, and non-converters describe the same specific obstacle in their own words.",
       };
@@ -708,6 +767,8 @@ function nextExperiment(answers) {
         target: "Five current customers: two who renewed or expanded, two who are quiet, and one who churned or asked to leave.",
         question_or_observation:
           "Ask what outcome they can point to since adopting the product, what they would do without it, and who else they would recommend it to.",
+        interpretation:
+          "Renewers articulating a specific recurring outcome suggests durable value worth concentrating on; only initial-purchase enthusiasm suggests growth will need a different wedge.",
         meaningful_evidence:
           "A specific customer group emerges whose outcome you can describe concretely, and at least two customers articulate the value unprompted.",
       };
@@ -731,7 +792,7 @@ function remainingUnknowns(answers, expertiseUnclear) {
     unknowns.push("What specific advantage you bring to this opportunity.");
   }
   unknowns.push("Independent evidence for anything you have reported so far.");
-  return unknowns.slice(0, 5);
+  return unknowns.slice(0, 3);
 }
 
 // ---------------------------------------------------------------------------

@@ -121,10 +121,6 @@
   color: var(--pmf-ink);
 }
 
-.pmf-button-block {
-  /* width: 100%; */
-}
-
 .pmf-button:disabled {
   opacity: 0.55;
   cursor: not-allowed;

@@ -61,6 +61,7 @@ The `json` column holds one object with everything behind the row:
 {
   "email": "founder@example.com",
   "generated_by": "gemini",
+  "prompt_version": "v2-context-reasoning",
   "model": "gemini-3.5-flash",
   "latency_ms": 4213,
   "generated_at": "2026-10-29T04:45:12.345Z",
@@ -80,6 +81,16 @@ The `json` column holds one object with everything behind the row:
 
 Because the map is stored verbatim, you can review, export or rebuild any output
 from the sheet without calling the model again.
+
+### Prompt versions
+
+`prompt_version` in the record identifies which reasoning prompt produced the
+map, so new outputs stay comparable with historical traces. `v2-context-reasoning`
+(current) instructs the model to interpret the specific opportunity — naming the
+unresolved distinction that matters — instead of summarising inputs, and adds
+`next_experiment.interpretation` (what different plausible findings would suggest).
+Rows logged before the change have no `prompt_version` field and no
+`interpretation` in their experiment.
 
 
 Logging is deliberately **best-effort**: it runs after the response is built and

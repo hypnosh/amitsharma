@@ -591,9 +591,11 @@
         [copy.result.experiment_labels.action, exp.action],
         [copy.result.experiment_labels.target, exp.target],
         [copy.result.experiment_labels.question_or_observation, exp.question_or_observation],
+        [copy.result.experiment_labels.interpretation, exp.interpretation],
         [copy.result.experiment_labels.meaningful_evidence, exp.meaningful_evidence]
       ];
       rows.forEach(function (r) {
+        if (!r[1]) return;
         var dt = h("dt", null, r[0]);
         var dd = h("dd", null, r[1]);
         dl.appendChild(dt);
@@ -715,6 +717,7 @@
     lines.push(L.experiment_labels.action + ": " + map.next_experiment.action);
     lines.push(L.experiment_labels.target + ": " + map.next_experiment.target);
     lines.push(L.experiment_labels.question_or_observation + ": " + map.next_experiment.question_or_observation);
+    if (map.next_experiment.interpretation) lines.push(L.experiment_labels.interpretation + ": " + map.next_experiment.interpretation);
     lines.push(L.experiment_labels.meaningful_evidence + ": " + map.next_experiment.meaningful_evidence);
     lines.push("");
     lines.push(L.sections.unknowns.toUpperCase());

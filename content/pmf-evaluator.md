@@ -17,7 +17,7 @@ seo:
 # privacy_url: set to the site's privacy notice URL (the email-step link
 # hides itself while empty). primer_url must be a verified destination.
 evaluator:
-  api_base: "https://pmf-evaluator.amitksharma.workers.dev"
+  api_base: "https://project--059acffb-f718-4bdd-a002-a940184d0cc0.lovable.app"
   primer_url: "https://amitsharma.tech/product-market-fit-primer/"
   privacy_url: "https://amitsharma.tech/privacy/"
   source: "amitsharma.tech/pmf-evaluator"
@@ -139,6 +139,7 @@ evaluator:
         action: "What to do"
         target: "Whom to approach or what to examine"
         question_or_observation: "What to ask or observe"
+        interpretation: "What different findings would suggest"
         meaningful_evidence: "What would count as meaningful evidence"
       copy_button: "Copy as plain text"
       copied_button: "Copied"
@@ -148,7 +149,7 @@ evaluator:
         headline: "You've identified what to investigate. Now work through it systematically."
         body: "The Product Market Fit Primer is a practical workbook that helps you develop hypotheses, assess the opportunity, conduct customer discovery, capture evidence, design experiments and synthesise what you learn."
         ai_note: "Its AI companion helps you work through the material, structure your reasoning and challenge assumptions. It cannot independently establish real-world evidence."
-        price_label: "Price: ₹1,999 + GST"
+        price_label: "Price: ₹1,999"
         cta: "Explore the Product Market Fit Primer"
 ---
 
