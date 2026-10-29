@@ -558,6 +558,25 @@
     return sec;
   }
 
+  function authorBlock() {
+    var a = copy.result && copy.result.author;
+    if (!a || !a.headline || !config.consultingUrl) return null;
+    var sec = h("section", "pmf-author pmf-result-section");
+    sec.appendChild(h("h2", "pmf-h2", a.headline));
+    (a.lines || []).forEach(function (line) {
+      if (line) sec.appendChild(h("p", "pmf-paragraph", line));
+    });
+    var link = h("a", "pmf-author-cta", a.cta || "Talk to Amit");
+    link.href = config.consultingUrl;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.addEventListener("click", function () {
+      track("consulting_cta_click", { destination: "consulting_call" });
+    });
+    sec.appendChild(link);
+    return sec;
+  }
+
   function renderResult() {
     root.textContent = "";
     var map = state.map;
@@ -565,6 +584,9 @@
 
     var wrap = h("article", "pmf-result");
     wrap.setAttribute("aria-live", "polite");
+
+    var author = authorBlock();
+    if (author) wrap.appendChild(author);
 
     wrap.appendChild(resultSection(copy.result.sections.as_described, function (sec) {
       sec.appendChild(h("p", "pmf-paragraph", map.opportunity_summary));
@@ -694,6 +716,14 @@
     var lines = [];
     lines.push("PMF OPPORTUNITY MAP");
     lines.push("");
+    if (L.author && L.author.headline) {
+      lines.push(L.author.headline);
+      (L.author.lines || []).forEach(function (line) {
+        if (line) lines.push(line);
+      });
+      if (config.consultingUrl) lines.push(L.author.cta + ": " + config.consultingUrl);
+      lines.push("");
+    }
     lines.push(L.sections.as_described.toUpperCase());
     lines.push(map.opportunity_summary);
     lines.push("");

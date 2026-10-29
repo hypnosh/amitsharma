@@ -13,9 +13,16 @@
   <meta name="twitter:card" content="{{ .Params.seo.twitter_card | default "summary" }}">
   {{ with .Params.seo.og_title }}<meta name="twitter:title" content="{{ . }}">{{ end }}
   {{ with .Params.seo.og_description }}<meta name="twitter:description" content="{{ . }}">{{ end }}
-  <link rel="stylesheet" href="{{ "css/pmf-evaluator.css" | relURL }}">
+  {{ with resources.Get "css/pmf-evaluator.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+  {{ end }}
+  {{ with resources.Get "scripts/pmf-evaluator.js" | minify | fingerprint }}
+    <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
+  {{ end }}
+
+  <!-- <link rel="stylesheet" href="{{ "css/pmf-evaluator.css" | relURL }}"> -->
   {{ $e := .Params.evaluator }}
-  <div id="pmf-evaluator-config" hidden>{{ dict "apiBase" $e.api_base "primerUrl" $e.primer_url "privacyUrl" $e.privacy_url "source" $e.source "copy" $e.copy | jsonify }}</div>
+  <div id="pmf-evaluator-config" hidden>{{ dict "apiBase" $e.api_base "primerUrl" $e.primer_url "privacyUrl" $e.privacy_url "consultingUrl" $e.consulting_url "source" $e.source "copy" $e.copy | jsonify }}</div>
 </head>
 <body>
   <main class="pmf-page">
@@ -27,6 +34,6 @@
       <a style="color:#e75608" href="{{ with .Params.evaluator.primer_url }}{{ . }}{{ end }}">explore the Product Market Fit Primer</a> directly.
     </p>
   </noscript>
-  <script src="{{ "js/pmf-evaluator.js" | relURL }}" defer></script>
+  <!-- <script src="{{ "js/pmf-evaluator.js" | relURL }}" defer></script> -->
 </body>
 </html>

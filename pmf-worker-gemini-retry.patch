@@ -1,0 +1,138 @@
+--- a/worker/src/index.js
++++ b/worker/src/index.js
+@@ -598,6 +598,17 @@
+   ].join("\n");
+ }
+ 
++// Transient upstream conditions worth one retry before falling back:
++// rate limiting and server-side overload. Timeouts, refusals, malformed
++// output and schema failures are not retried — they won't heal in seconds.
++const RETRYABLE_STATUSES = new Set([429, 500, 502, 503, 504]);
++const RETRY_DELAY_MS = 2_000;
++const MAX_ATTEMPTS = 2;
++
++function sleep(ms) {
++  return new Promise((resolve) => setTimeout(resolve, ms));
++}
++
+ async function generateMap(env, answers) {
+   const apiKey = env.GEMINI_API_KEY;
+   const model = env.PMF_GEMINI_MODEL?.trim() || DEFAULT_MODEL;
+@@ -607,51 +618,75 @@
+   const controller = new AbortController();
+   const timer = setTimeout(() => controller.abort(), GEMINI_TIMEOUT_MS);
+   try {
+-    const response = await fetch(`${GEMINI_ENDPOINT}/${model}:generateContent`, {
+-      method: "POST",
+-      headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
+-      signal: controller.signal,
+-      body: JSON.stringify({
+-        systemInstruction: { parts: [{ text: systemPrompt() }] },
+-        contents: [{ role: "user", parts: [{ text: userPrompt(answers) }] }],
+-        generationConfig: {
+-          temperature: 0.4,
+-          maxOutputTokens: 4096,
+-          responseMimeType: "application/json",
+-          responseSchema: responseSchema(),
+-        },
+-      }),
+-    });
+-
+-    const latencyMs = Date.now() - startedAt;
+-    if (!response.ok) {
+-      const body = await response.text().catch(() => "");
+-      console.error(`Gemini request failed [${response.status}]: ${body.slice(0, 300)}`);
+-      return { ok: false, reason: `gemini_http_${response.status}`, latencyMs, model, status: response.status };
+-    }
++    for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
++      const latencyMs = () => Date.now() - startedAt;
++      let response;
++      try {
++        response = await fetch(`${GEMINI_ENDPOINT}/${model}:generateContent`, {
++          method: "POST",
++          headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
++          signal: controller.signal,
++          body: JSON.stringify({
++            systemInstruction: { parts: [{ text: systemPrompt() }] },
++            contents: [{ role: "user", parts: [{ text: userPrompt(answers) }] }],
++            generationConfig: {
++              temperature: 0.4,
++              maxOutputTokens: 4096,
++              responseMimeType: "application/json",
++              responseSchema: responseSchema(),
++            },
++          }),
++        });
++      } catch (error) {
++        if (error instanceof Error && error.name === "AbortError") {
++          return { ok: false, reason: "gemini_timeout", latencyMs: latencyMs(), model };
++        }
++        if (attempt < MAX_ATTEMPTS) {
++          console.warn(`Gemini request error (attempt ${attempt}), retrying: ${String(error).slice(0, 200)}`);
++          await sleep(RETRY_DELAY_MS);
++          continue;
++        }
++        return { ok: false, reason: "gemini_request_error", latencyMs: latencyMs(), model };
++      }
+ 
+-    const payload = await response.json();
+-    if (payload.promptFeedback?.blockReason) {
+-      return { ok: false, reason: `gemini_blocked_${payload.promptFeedback.blockReason}`, latencyMs, model };
+-    }
+-    const text = (payload.candidates?.[0]?.content?.parts ?? []).map((p) => p.text ?? "").join("").trim();
+-    if (!text) return { ok: false, reason: "gemini_empty_output", latencyMs, model };
++      if (!response.ok) {
++        const body = await response.text().catch(() => "");
++        console.error(`Gemini request failed [${response.status}] (attempt ${attempt}): ${body.slice(0, 300)}`);
++        if (RETRYABLE_STATUSES.has(response.status) && attempt < MAX_ATTEMPTS) {
++          await sleep(RETRY_DELAY_MS);
++          continue;
++        }
++        const suffix = attempt > 1 ? "_after_retry" : "";
++        return {
++          ok: false,
++          reason: `gemini_http_${response.status}${suffix}`,
++          latencyMs: latencyMs(),
++          model,
++          status: response.status,
++        };
++      }
+ 
+-    let raw;
+-    try {
+-      raw = JSON.parse(text);
+-    } catch {
+-      return { ok: false, reason: "gemini_malformed_json", latencyMs, model };
+-    }
+-    if (!validMap(raw)) {
+-      console.error("Gemini output failed schema validation");
+-      return { ok: false, reason: "gemini_schema_invalid", latencyMs, model };
++      const payload = await response.json();
++      if (payload.promptFeedback?.blockReason) {
++        return { ok: false, reason: `gemini_blocked_${payload.promptFeedback.blockReason}`, latencyMs: latencyMs(), model };
++      }
++      const text = (payload.candidates?.[0]?.content?.parts ?? []).map((p) => p.text ?? "").join("").trim();
++      if (!text) return { ok: false, reason: "gemini_empty_output", latencyMs: latencyMs(), model };
++
++      let raw;
++      try {
++        raw = JSON.parse(text);
++      } catch {
++        return { ok: false, reason: "gemini_malformed_json", latencyMs: latencyMs(), model };
++      }
++      if (!validMap(raw)) {
++        console.error("Gemini output failed schema validation");
++        return { ok: false, reason: "gemini_schema_invalid", latencyMs: latencyMs(), model };
++      }
++      return { ok: true, map: raw, model, latencyMs: latencyMs() };
+     }
+-    return { ok: true, map: raw, model, latencyMs };
+-  } catch (error) {
+-    const latencyMs = Date.now() - startedAt;
+-    const reason = error instanceof Error && error.name === "AbortError" ? "gemini_timeout" : "gemini_request_error";
+-    return { ok: false, reason, latencyMs, model };
++    // Unreachable: the loop always returns. Kept to satisfy static analysis.
++    return { ok: false, reason: "gemini_request_error", latencyMs: Date.now() - startedAt, model };
+   } finally {
+     clearTimeout(timer);
+   }

@@ -121,6 +121,10 @@
   color: var(--pmf-ink);
 }
 
+.pmf-button-block {
+  width: auto;
+}
+
 .pmf-button:disabled {
   opacity: 0.55;
   cursor: not-allowed;
@@ -184,7 +188,6 @@
 
 .pmf-textarea,
 .pmf-input {
-  /* width: 100%; */
   background: var(--pmf-bg);
   border: 1px solid var(--pmf-line);
   border-radius: var(--pmf-radius);
@@ -508,6 +511,21 @@
   margin-top: 16px;
 }
 
+/* Author chrome (talk to Amit) */
+
+.pmf-author {
+  border-left: 2px solid var(--pmf-terracotta);
+}
+
+.pmf-author-cta {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--pmf-terracotta);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Accessibility + motion */
 
 .pmf-page :focus-visible {
@@ -560,6 +578,12 @@
   .pmf-result-actions,
   .pmf-primer {
     display: none;
+  }
+
+  .pmf-author-cta::after {
+    content: " (" attr(href) ")";
+    font-weight: 400;
+    word-break: break-all;
   }
 
   .pmf-h1,

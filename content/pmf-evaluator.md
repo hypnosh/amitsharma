@@ -20,6 +20,7 @@ evaluator:
   api_base: "https://pmf-evaluator.amitksharma.workers.dev/api/public/pmf/evaluate"
   primer_url: "https://amitsharma.tech/product-market-fit-primer/"
   privacy_url: "https://amitsharma.tech/privacy/"
+  consulting_url: "https://cal.id/amitsharma-product/office-hours"
   source: "amitsharma.tech/pmf-evaluator"
   copy:
     intro:
@@ -145,6 +146,12 @@ evaluator:
       copied_button: "Copied"
       print_button: "Print"
       fallback_note: "This map was built from your answers using our standard framework — the personalised generation service was unavailable, so the wording is deliberately cautious and generic."
+      author:
+        headline: "Want to talk through your opportunity?"
+        lines:
+          - "Sometimes the next step isn't another framework. It's a conversation about what you're building, what you've learnt so far, and where you're stuck."
+          - "I work with founders on product direction, customer validation and execution."
+        cta: "Talk to Amit"
       primer:
         headline: "You've identified what to investigate. Now work through it systematically."
         body: "The Product Market Fit Primer is a practical workbook that helps you develop hypotheses, assess the opportunity, conduct customer discovery, capture evidence, design experiments and synthesise what you learn."
