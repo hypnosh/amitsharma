@@ -1,6 +1,6 @@
 ---
 date: '2026-05-25'
-draft: true
+draft: false
 title: 'What Founders Actually Want From a Head of Product'
 description: "What founders actually want from a Head of Product isn’t more frameworks or feature ideas. It’s better decisions, clearer prioritization, stronger alignment between business and engineering, and applied product judgment under real-world constraints."
 tags:
