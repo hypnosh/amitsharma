@@ -8,7 +8,7 @@ layout: "speaking"
 eyebrow: "Product operator · Startup mentor · Speaker"
 heroHeadline: "Better product decisions begin with better questions."
 heroText: "I work with founders and product teams to turn domain expertise, technology and customer insight into products people value. As a fractional product leader, startup mentor and creator of the PMF Primer, I bring an operator's perspective to the decisions that shape product-market fit, growth and execution. My work spans early-stage product diagnostics, founder mentoring, product strategy and leadership in complex digital businesses. I bring these questions to keynotes, fireside conversations, founder sessions and workshops."
-contactURL: "https://cal.id/amitsharma-product/exploratory-call"
+contactURL: "/exploratory-call"
 formats:
   - Keynotes
   - Fireside chats
@@ -87,4 +87,4 @@ Every event has a different audience and a different reason for bringing people 
 
 Share the event, audience, date, location and preferred format to start a conversation.
 
-[Discuss a Speaking Engagement](https://cal.id/amitsharma-product/exploratory-call)
+[Discuss a Speaking Engagement](/exploratory-call)

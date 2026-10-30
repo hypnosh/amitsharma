@@ -1,6 +1,8 @@
 ---
 date: '2026-10-29T13:45:46+05:30'
-layout: 'officehours'
+layout: 'single'
+type: 'calidembed'
+meetingtype: 'office-hours'
 title: 'Office Hours'
 sitemap:
     disable: false
