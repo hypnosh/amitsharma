@@ -42,6 +42,10 @@ navigation:
       href: "#author"
     - label: "The offer"
       href: "#offer"
+    - label: "Free Evaluator"
+      href: "#evaluator"
+    - label: "Home"
+      href: "/"
 
 hero:
   badges:
@@ -249,10 +253,22 @@ final_cta:
   title: "Get the Product Market Fit Primer"
   button_label: "Get the Primer"
 
+evaluator:
+  url: "/pmf-evaluator/"
+  link_label: "Try the free PMF Evaluator"
+  eyebrow: "Free assessment"
+  headline: "Not sure where your product idea stands?"
+  lead: "Before you dive into the workbook, take a first look at your opportunity."
+  description: "The free PMF Evaluator helps you examine four essential dimensions of your idea: your technology, the audience's need, willingness to pay, and your founder expertise."
+  panel_title: "Get your free PMF Opportunity Map"
+  panel_text: "Answer a few questions about your product and receive an AI-generated assessment highlighting what looks promising, what remains uncertain, and what to investigate next."
+  panel_badge: "Free assessment"
+  cta_label: "Evaluate your opportunity →"
+  caveat: "A first-pass assessment, not a PMF certification or substitute for customer validation."
 consulting:
   headline: "Want help applying the framework to your product?"
   link_text: "Book a conversation with Amit"
-  url: "https://cal.id/amitsharma-product/exploratory-call"
+  url: "/exploratory-call/"
 
 footer:
   author: "Amit Sharma"

@@ -93,13 +93,14 @@
 </head>
 <body>
   {{ $cta := .Params.purchase_url | default "#offer" }}
+  {{ $evaluator := .Params.evaluator }}
+
 
   <header class="site-header">
     {{ with .Params.navigation }}
     <a class="brand" href="#top"><span class="brand-mark"></span>{{ .brand | default $.Title }}</a>
     <nav aria-label="{{ .label | default "Page navigation" }}">
       {{ range .items }}<a href="{{ .href }}">{{ .label }}</a>{{ end }}
-      <a href="/">Home</a>
     </nav>
     {{ with .buy_label }}<a class="button button-small buy-click" href="{{ $cta }}">{{ . }}</a>{{ end }}
     {{ end }}
@@ -120,6 +121,7 @@
             {{ with .delivery_note }}<small>{{ . }}</small>{{ end }}
           </div>
         </div>
+        {{ with $evaluator }}<p class="evaluator-link"><a href="{{ .url }}">{{ .link_label | default "Try the free PMF Evaluator" }} →</a></p>{{ end }}
         {{ with $.Params.ai_highlight }}
         <aside class="ai-highlight">
           <strong>{{ .label }}</strong>
@@ -318,8 +320,27 @@
       <div class="offer-action">
         {{ with .cta_label }}<a class="button buy-click" href="{{ $cta }}"{{ if hasPrefix $cta "http" }} rel="noopener" target="_blank"{{ end }}>{{ . }} →</a>{{ end }}
         {{ with .microcopy }}<small>{{ . }}</small>{{ end }}
+        {{ with $evaluator }}<small class="offer-evaluator"><a href="{{ .url }}">{{ .link_label | default "Try the free PMF Evaluator" }} →</a></small>{{ end }}
       </div>
     </div></section>
+    {{ end }}
+
+    {{ with $evaluator }}
+    <section class="band shell evaluator" id="evaluator">
+      <div class="evaluator-copy">
+        {{ with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+        <h2>{{ .headline }}</h2>
+        {{ with .lead }}<p class="lede">{{ . }}</p>{{ end }}
+        {{ with .description }}<p class="evaluator-text">{{ . }}</p>{{ end }}
+      </div>
+      <div class="evaluator-panel">
+        {{ with .panel_badge }}<p class="evaluator-badge">{{ . }}</p>{{ end }}
+        {{ with .panel_title }}<h3>{{ . }}</h3>{{ end }}
+        {{ with .panel_text }}<p>{{ . }}</p>{{ end }}
+        {{ with .cta_label }}<a class="button" href="{{ $.Params.evaluator.url }}">{{ . }}</a>{{ end }}
+        {{ with .caveat }}<small>{{ . }}</small>{{ end }}
+      </div>
+    </section>
     {{ end }}
 
     {{ with .Params.final_cta }}
