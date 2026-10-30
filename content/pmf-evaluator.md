@@ -1,14 +1,14 @@
 ---
-title: "PMF Evaluator"
+title: "Product Market Fit Evaluator"
 description: "Answer a few short questions about your idea, your customers and what you know so far. Get a personalised PMF Opportunity Map with the assumptions worth testing and one practical next step."
 layout: "pmf-evaluator"
 date: 2026-10-28
 
 seo:
-  title: "PMF Evaluator — Understand your product opportunity"
+  title: "Product Market Fit Evaluator — Understand your product opportunity"
   description: "A free two-minute PMF Opportunity Map: what you know, what remains uncertain, and one practical next step. No PMF score or pass/fail verdict."
   og_type: "website"
-  og_title: "PMF Evaluator — Understand your product opportunity"
+  og_title: "Product Market Fit Evaluator — Understand your product opportunity"
   og_description: "A free two-minute PMF Opportunity Map: what you know, what remains uncertain, and one practical next step."
   twitter_card: "summary"
 
