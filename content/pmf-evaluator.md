@@ -18,9 +18,9 @@ seo:
 # hides itself while empty). primer_url must be a verified destination.
 evaluator:
   api_base: "https://pmf-evaluator.amitksharma.workers.dev/api/public/pmf/evaluate"
-  primer_url: "https://amitsharma.tech/product-market-fit-primer/"
-  privacy_url: "https://amitsharma.tech/privacy/"
-  consulting_url: "https://cal.id/amitsharma-product/office-hours"
+  primer_url: "https://www.amitsharma.tech/product-market-fit-primer/"
+  privacy_url: "https://www.amitsharma.tech/privacy/"
+  consulting_url: "https://www.amitsharma.tech/officehours/"
   source: "amitsharma.tech/pmf-evaluator"
   copy:
     intro:
