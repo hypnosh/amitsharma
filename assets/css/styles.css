@@ -465,7 +465,23 @@ footer {
 .page-nav a:hover {
     background: #eee;
 }
-    
+
+.related-posts {
+    margin-top: 90px;
+    font-size: .8em;
+}
+.related-posts-grid {
+    display: flex;
+    justify-content: space-between;
+}
+.related-post-card {
+    width: 30%;
+    border: 1px solid #ccc;
+    box-shadow: #eee 3px 3px 3px;
+    padding: 2px 15px 5px;
+    border-radius: 7px;
+}
+
 @media (max-width: 860px) {
     .testimonials-grid {
         grid-template-columns: 1fr;

@@ -20,9 +20,9 @@
         {{ .Content }}
     </div>
 
-
+    {{ if eq .Section "posts" }}
     <div class="page-nav">
-        {{ if eq .Section "posts" }}
+        
         {{ $pages := where site.RegularPages "Section" "posts" }}
         {{ $pages = sort $pages "Date" "desc" }}
         {{ with $pages.Prev . }}
@@ -35,8 +35,10 @@
             Next →
             </a>
         {{ end }}
-        {{ end }}
+    
     </div>
+            {{ partial "related-posts.html" . }}
+    {{ end }}
 
     {{ if .Params.showTestimonials }}
         {{ partial "testimonials.html" . }}

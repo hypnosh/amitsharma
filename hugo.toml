@@ -20,3 +20,16 @@ title = 'Amit Sharma - Digital Product Leader'
   linkedin = "https://www.linkedin.com/in/sharmakamit/"
   github = "https://www.github.com/hypnosh"
   image = "images/pmf/amit.jpg"
+  
+[related]
+  threshold = 80
+  includeNewer = true
+  toLower = true
+
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+
+  [[related.indices]]
+    name = "categories"
+    weight = 80
