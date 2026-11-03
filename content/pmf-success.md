@@ -6,6 +6,7 @@ url: '/product-market-fit-primer/success'
 robots: "noindex, nofollow"
 sitemap:
   disable: true
+latestPosts: true
 ---
 
 ### You're in.

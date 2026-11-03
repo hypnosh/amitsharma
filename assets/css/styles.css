@@ -466,16 +466,25 @@ footer {
     background: #eee;
 }
 
-.related-posts {
+.related-posts, .latest-posts {
     margin-top: 90px;
     font-size: .8em;
 }
-.related-posts-grid {
+.latest-posts {
+    margin-top: 120px;
+}
+.related-posts-grid, .latest-posts-grid {
     display: flex;
     justify-content: space-between;
+    row-gap: 12px;
 }
-.related-post-card {
-    width: 30%;
+.latest-posts-grid {
+    align-content: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.related-post-card, .latest-post-card {
+    width: 32%;
     border: 1px solid #ccc;
     box-shadow: #eee 3px 3px 3px;
     padding: 2px 15px 5px;
@@ -526,4 +535,14 @@ footer {
     .speaking-content {
         font-size: 1.02rem;
     }
+
+    .related-posts-grid, .latest-posts-grid {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .related-post-card, .latest-post-card {
+        width: 100%;
+    }
+
 }

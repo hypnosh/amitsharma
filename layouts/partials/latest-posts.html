@@ -1,0 +1,29 @@
+{{ $posts := where site.RegularPages "Section" "posts" }}
+{{ $posts = sort $posts "Date" "desc" }}
+{{ $posts = first 6 $posts }}
+
+{{ with $posts }}
+<section class="latest-posts">
+    <h2>Latest Posts</h2>
+
+    <div class="latest-posts-grid">
+        {{ range . }}
+        <article class="latest-post-card">
+            <h3>
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h3>
+
+            {{ with .Description }}
+                <p>{{ . | plainify | truncate 60 }}</p>
+            {{ else }}
+                <p>{{ .Summary | plainify | truncate 60 }}</p>
+            {{ end }}
+
+            <time>{{ .Date.Format "2 January 2006" }}</time>
+        </article>
+        {{ end }}
+    </div>
+
+    <a href="/posts/">View all posts →</a>
+</section>
+{{ end }}

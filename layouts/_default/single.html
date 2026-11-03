@@ -40,6 +40,10 @@
             {{ partial "related-posts.html" . }}
     {{ end }}
 
+    {{ if .Params.latestPosts }}
+        {{ partial "latest-posts.html" }}
+    {{ end }}
+
     {{ if .Params.showTestimonials }}
         {{ partial "testimonials.html" . }}
     {{ end }}
